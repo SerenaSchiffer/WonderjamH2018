@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientSprite: {fileID: 21300000, guid: b0957edec1e24174cb5491ca2db5024e, type: 3}
   baseIngredientValue: 4
-  mainColor: {r: 0.026115587, g: 0.75735295, b: 0, a: 0}
+  mainColor: {r: 0.026115587, g: 0.75735295, b: 0, a: 1}
