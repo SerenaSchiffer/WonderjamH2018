@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] int player;
     [SerializeField] bool useKeyboard;
+    [SerializeField]
+    float speed = 1;
 
     Vector2 directionToRaycast;
 
@@ -14,10 +16,10 @@ public class PlayerController : MonoBehaviour {
 		
 	}
 	
-    void SetVelocity(Vector2 speed)
+    void SetVelocity(Vector2 basicSpeed)
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = speed;
-        directionToRaycast = speed.x > speed.y ? new Vector2(speed.x, 0) : new Vector2(0, speed.y);
+        gameObject.GetComponent<Rigidbody2D>().velocity = basicSpeed * speed;
+        directionToRaycast = basicSpeed.x > basicSpeed.y ? new Vector2(basicSpeed.x, 0) : new Vector2(0, basicSpeed.y);
     }
 
     void DoRaycast()
