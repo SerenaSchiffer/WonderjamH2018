@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b2dc94ce428cf488e0540ca0d5264a, type: 3}
   m_Name: Ingredient1
   m_EditorClassIdentifier: 
+  ingredientName: CercleBleu
   ingredientSprite: {fileID: 21300000, guid: ed4fbcc23fe654e43a2ccd6892af360b, type: 3}
   baseIngredientValue: 5
   mainColor: {r: 0, g: 0.0896554, b: 1, a: 1}

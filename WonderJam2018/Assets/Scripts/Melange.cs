@@ -6,7 +6,7 @@ using UnityEngine;
 public class Melange : ScriptableObject {
     public static Ingredient[] ingredients;
 
-    Queue<Ingredient> mesIngredients;
+    public Queue<Ingredient> mesIngredients;
         
     private void OnEnable()
     {
@@ -19,7 +19,7 @@ public class Melange : ScriptableObject {
     public void GenerateRandomRecipe()
     {
         mesIngredients.Clear();
-        int numberOfIngredients = Random.Range(1, ingredients.Length + 1);
+        int numberOfIngredients = Random.Range(1, 4);
 
         for(int i = 0; i < numberOfIngredients; i++)
         {
@@ -28,6 +28,11 @@ public class Melange : ScriptableObject {
         }
     }
     
+    public void AddIngredient(Ingredient i)
+    {
+        mesIngredients.Enqueue(i);
+    }
+
     public Color MelangeColor() 
     {
         List<Color> allColors = new List<Color>();
