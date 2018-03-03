@@ -6,14 +6,24 @@ public class CompletedOrderCounter : MonoBehaviour {
 
     [HideInInspector] public Queue<Melange> completedMelanges;
 
-	// Use this for initialization
-	void Start () {
+    private InstantiableObjectContainer objectsReferences;
+
+    // Use this for initialization
+    void Start () {
         completedMelanges = new Queue<Melange>();
-	}
+        objectsReferences = GetComponent<InstantiableObjectContainer>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (FindMatchingClient())
+        GameObject matchingClient = FindMatchingClient();
+
+		if (matchingClient)
+        {
+            GameObject newPotion = Instantiate(objectsReferences.Potion);
+            //newPotion.GetComponent<SpriteRenderer>().sprite = SpriteResultant de la potion #scriptableoject
+            newPotion.GetComponent<Rigidbody2D>().velocity = (matchingClient.transform.position - newPotion.transform.position).normalized;
+        }
 	}
 
     public void AddMelange(Melange newCompletedMelange)
@@ -23,7 +33,12 @@ public class CompletedOrderCounter : MonoBehaviour {
 
     private GameObject FindMatchingClient()
     {
-        Client[] clients;
+        List<Client> clients = new List<Client>();
+        foreach(Transform child in objectsReferences.ContainerClients.transform)
+        {
+            clients.Add(child.GetComponent<Client>());
+        }
+
         foreach (Client client in clients)
         {
             int cptGoodIngredient = 0;
