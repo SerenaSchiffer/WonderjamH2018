@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58172741457420282}
   - component: {fileID: 50506833072481192}
   - component: {fileID: 114889290107345632}
+  - component: {fileID: 114526277351792142}
   m_Layer: 0
   m_Name: Client
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442341280420188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.02, y: 0.98, z: -0.018012187}
+  m_LocalPosition: {x: 5.529446, y: -2.2556336, z: -0.018012187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,6 +79,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &114526277351792142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442341280420188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6fa6646e5523a4fb77e53c55d52ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Client: {fileID: 0}
+  MelangeClientPopup: {fileID: 1720324693753758, guid: eb3611a8ea9ee984e8c88d385dd1e42b,
+    type: 2}
+  ImageIngredientUI: {fileID: 1170251402621720, guid: fc656c30781b76c4889471b9698e49f7,
+    type: 2}
 --- !u!114 &114889290107345632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffbf99cc2a03bf4f951387ed2064e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
 --- !u!212 &212059636527251528
 SpriteRenderer:
   m_ObjectHideFlags: 1

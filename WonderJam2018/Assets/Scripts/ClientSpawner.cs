@@ -29,8 +29,11 @@ public class ClientSpawner : MonoBehaviour {
                     target = child.gameObject;
             }
 
-            Vector3 spawnPosition = new Vector3(target.transform.position.x, transform.position.y, 0);
-            Instantiate(objectsReferences.Client, spawnPosition, new Quaternion()); //TODO donner un rotation qui a de l'allure
+            if (target)
+            {
+                Vector3 spawnPosition = new Vector3(target.transform.position.x, transform.position.y, 0);
+                Instantiate(objectsReferences.Client, spawnPosition, new Quaternion()); //TODO donner un rotation qui a de l'allure
+            }
 
             timer = spawnTimer;
         }
