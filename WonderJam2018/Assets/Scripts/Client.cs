@@ -47,12 +47,9 @@ public class Client : MonoBehaviour {
         {
             if (hasArrived)
             {
-                if (myCounter.side == CounterSide.Left)
-                    rb.velocity = new Vector2(-1f, 0f);
-                else
-                    rb.velocity = new Vector2(1f, 0f);
+                ExitShop();
 
-                Invoke("AutoDestroy", 1f);
+                
             }
         }
 
@@ -64,7 +61,22 @@ public class Client : MonoBehaviour {
             hasArrived = true;
             rb.velocity = new Vector2(0, -1);
         }
+        else
+        {
+            if ()
+        }
 	}
+
+
+    private void ExitShop()
+    {
+        if (myCounter.side == CounterSide.Left)
+            rb.velocity = new Vector2(-1f, 0f);
+        else
+            rb.velocity = new Vector2(1f, 0f);
+
+        Invoke("AutoDestroy", 3f);
+    }
 
     private bool IsInFrontOfSomething()
     {
