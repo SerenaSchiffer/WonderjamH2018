@@ -57,4 +57,22 @@ public class ServiceCounter : Interactable {
         else
             return false;
     }
+
+    public override PickableItem InteractWithPlayer(PickableItem playerItem)
+    {
+        if(playerItem as Melange != null)
+        {
+            return null;
+        }
+        else
+        {
+            return playerItem;
+        }
+    }
+
+    public override void Highlight(PickableItem playerItem)
+    {
+        if(playerItem as Melange != null)
+            base.Highlight(playerItem);
+    }
 }
