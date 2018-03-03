@@ -5,27 +5,29 @@ using UnityEngine;
 public class Interactable : MonoBehaviour {
 
     int highlightBuffer = 0;
+    GameObject interactableObject;
 
 	// Use this for initialization
-	void Start () {
-		
+	public virtual void Start () {
+        interactableObject = transform.Find("Highlight").gameObject;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 		if(highlightBuffer > 0)
         {
+            UpdateHighlightShader(true);
             highlightBuffer--;
         }
         else
         {
-            UpdateHighlightShader();
+            UpdateHighlightShader(false);
         }
 	}
 
-    public virtual void InteractWithPlayer(Ingredient item)
+    public virtual Ingredient InteractWithPlayer(Ingredient item)
     {
-
+        return null;
     }
      
     public virtual void Highlight()
@@ -34,9 +36,9 @@ public class Interactable : MonoBehaviour {
         highlightBuffer = 3;
     }
     
-    void UpdateHighlightShader()
+    void UpdateHighlightShader(bool value)
     {
-
+        interactableObject.SetActive(value);
     }   
 
 
