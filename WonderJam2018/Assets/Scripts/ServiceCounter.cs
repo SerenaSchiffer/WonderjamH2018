@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CounterSide
+{
+    Left,
+    Right
+};
+
 public class ServiceCounter : MonoBehaviour {
 
-    bool occupied;
+    public CounterSide side;
+    
     Queue<GameObject> clientsEnFile;
 
     [HideInInspector] public GameObject potion;  //TODO: pt changer le type
 
 	// Use this for initialization
 	void Start () {
-        occupied = false;
         clientsEnFile = new Queue<GameObject>();
 	}
 	

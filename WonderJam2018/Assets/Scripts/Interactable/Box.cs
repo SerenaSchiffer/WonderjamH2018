@@ -56,7 +56,7 @@ public class Box : Interactable {
         }
         else if (playerItem as Melange != null)
         {
-            return null;
+            return playerItem;
         }
         else
         {
