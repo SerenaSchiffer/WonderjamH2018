@@ -14,4 +14,4 @@ MonoBehaviour:
   ingredientName: Eye
   ingredientSprite: {fileID: 21300000, guid: 12ff42d14ae758d41b6017392f7342ca, type: 3}
   baseIngredientValue: 4
-  mainColor: {r: 0.9632353, g: 0.9466278, b: 0.7224265, a: 1}
+  mainColor: {r: 0, g: 0.95862055, b: 1, a: 1}
