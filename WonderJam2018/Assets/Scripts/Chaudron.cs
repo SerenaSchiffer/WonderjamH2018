@@ -48,9 +48,9 @@ public class Chaudron : Interactable {
             FinishCooking();
     }
 
-    override public void InteractWithPlayer(Ingredient item)
+    override public void InteractWithPlayer(Ingredient playerItem)
     {
-        if(item == null)
+        if(playerItem == null)
         {
                 
             
@@ -69,7 +69,7 @@ public class Chaudron : Interactable {
         }
         else
         {
-            AddIngredient(item);
+            AddIngredient(playerItem);
         }
 
     }
