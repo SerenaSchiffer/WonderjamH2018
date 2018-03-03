@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-    int highlightBuffer = 0;
+    protected int highlightBuffer = 0;
     GameObject interactableObject;
 
 	// Use this for initialization

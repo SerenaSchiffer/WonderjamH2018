@@ -6,13 +6,15 @@ public class Box : Interactable {
 
     [SerializeField ]Ingredient myItem;
     SpriteRenderer itemRenderer;
+    SpriteRenderer parentRenderer;
 
 	// Use this for initialization
 	public override void Start () {
         base.Start();
         //myItem = null;
         itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-	}
+        parentRenderer = transform.parent.gameObject.GetComponent<SpriteRenderer>();
+    }
 	
 	// Update is called once per frame
 	public override void Update () {
@@ -67,5 +69,16 @@ public class Box : Interactable {
             }
             return null;
         }
+    }
+
+    public override void Highlight()
+    {
+        base.Highlight();
+
+    }
+
+    public int GetHighlight()
+    {
+        return highlightBuffer;
     }
 }
