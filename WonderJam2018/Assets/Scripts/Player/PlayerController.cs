@@ -37,22 +37,19 @@ public class PlayerController : MonoBehaviour {
         
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.tag == "Interactable")
-            {
-                if(!toInteractWith)
-                    hit.collider.gameObject.GetComponent<Interactable>().Highlight();
+            if(!toInteractWith)
+                hit.collider.gameObject.GetComponent<Interactable>().Highlight();
 
-                if (toInteractWith)
-                    hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
+            if (toInteractWith)
+                hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
 
-            }
         }
     }
 
     void ShowRaycast()
     {
         Debug.Log(directionToRaycast);
-       Debug.DrawRay((Vector2)transform.position, directionToRaycast);
+        Debug.DrawRay((Vector2)transform.position, directionToRaycast);
     }
 
 
