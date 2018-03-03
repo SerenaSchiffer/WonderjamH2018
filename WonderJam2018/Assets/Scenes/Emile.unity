@@ -1232,6 +1232,7 @@ MonoBehaviour:
   maxTimer: 10
   test: 0
   lerpSpeed: 0.01
+  swapFraction: 0.25
 --- !u!114 &984340283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,7 +1880,7 @@ Animator:
   m_GameObject: {fileID: 1452202039}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: db75c1ce246c30a4dad1115be940fa39, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6143686e933bdf54b9d9c176aead299d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
