@@ -5,11 +5,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    [SerializeField] Text player1Text;
-    [SerializeField] Text player2Text;
+    [SerializeField]
+    Text player1Text;
+
+    [SerializeField]
+    Text player2Text;
+
+    [SerializeField]
+    Image clockImage;
+
+    [SerializeField]
+    float maxTimer;
+
     Vector3 basePosition1, basePosition2, goal1, goal2;
     public bool test = false;
     public float lerpSpeed = 0.05f;
+    float timer = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +41,8 @@ public class UIManager : MonoBehaviour {
         }
         LookPosition();
         lerpSpeed += 0.03f;
+        timer += Time.deltaTime;
+        UpdateTimerImage();
 	}
 
     void SwapUI()
@@ -45,5 +59,15 @@ public class UIManager : MonoBehaviour {
         player1Text.transform.position = new Vector2(newX1, player1Text.transform.position.y);
         float newX2 = Mathf.Lerp(player2Text.transform.position.x, goal2.x, lerpSpeed * Time.deltaTime);
         player2Text.transform.position = new Vector2(newX2, player2Text.transform.position.y);
+    }
+
+    void UpdateScore()
+    {
+        //TODO manage score when player are created
+    }
+
+    void UpdateTimerImage()
+    {
+        clockImage.fillAmount = 1 - timer/maxTimer;
     }
 }
