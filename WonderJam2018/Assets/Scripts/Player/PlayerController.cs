@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public Ingredient myItem;
     [SerializeField]
     float speed = 1;
+    SpriteRenderer itemRenderer;
 
     const bool WillInteract = true;
 
@@ -16,8 +17,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+    }
 	
     void SetVelocity(Vector2 basicSpeed)
     {
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour {
                 hit.collider.gameObject.GetComponent<Interactable>().Highlight();
 
             if (toInteractWith)
-                hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
+                myItem = hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
 
         }
     }
@@ -63,8 +64,7 @@ public class PlayerController : MonoBehaviour {
 
         if (newSpeed.magnitude != Vector2.zero.magnitude)
         {
-            SetVelocity(newSpeed);
-            DoRaycast(!WillInteract);
+            SetVelocity(newSpeed);          
         }
         else
         {
@@ -78,9 +78,19 @@ public class PlayerController : MonoBehaviour {
         }
     }
     // Update is called once per frame
-    void FixedUpdate () {
+    void Update () {
         try
         {
+            if (myItem != null)
+            {
+                itemRenderer.sprite = myItem.ingredientSprite;
+            }
+            else
+            {
+                itemRenderer.sprite = null;
+            }
+
+            DoRaycast(!WillInteract);
             if (player != 1 && player != 2)
                 throw new PlayerIdException("L'ID du player n'est pas setté dans le script PlayerController");
 
