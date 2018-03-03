@@ -38,7 +38,7 @@ public class Client : MonoBehaviour {
             rb.velocity = Vector2.zero;
             GenerateRecipe();
             atPosition = true;
-            other.GetComponent<Targets>().SetOccupied();
+            other.GetComponent<ServiceCounter>().AddClientToQueue(other.gameObject);
         }
         
         if (other.tag == "Potion")
@@ -53,7 +53,7 @@ public class Client : MonoBehaviour {
         if (other.tag == "ClientTarget")
         {
             atPosition = false;
-            other.GetComponent<Targets>().SetNotOccupied();
+            other.GetComponent<ServiceCounter>().PopClientFromQueue();
         }
     }
 
