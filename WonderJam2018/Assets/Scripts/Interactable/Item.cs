@@ -13,7 +13,9 @@ public class Item : Interactable {
 	// Update is called once per frame
 	void Update () {
         base.Update();
-	}
+        if(swappingPosition)
+            HandleTranslate();
+    }
 
     void AutoDestroy()
     {
@@ -71,6 +73,45 @@ public class Item : Interactable {
         {
             base.Highlight(playerItem);
         }
+    }
+
+
+    public float travelDuration = 1f;
+    Vector3 originalPos;
+    Vector3 targetPos;
+    float travelTime = 0f;
+    public bool swappingPosition = false;
+    private void HandleTranslate()
+    {
+        float currentStep = 0;
+
+        if (travelTime < travelDuration / 4)
+        {
+            currentStep = Mathf.Lerp(0.3f, 1f, travelTime * 2);
+        }
+        else if (travelTime > travelDuration / 4 * 3)
+        {
+            currentStep = Mathf.Lerp(0.3f, 1f, travelDuration - (travelTime / 4 * 3));
+        }
+        else
+        {
+            currentStep = 1f;
+        }
+
+        travelTime += Time.deltaTime * currentStep;
+
+        transform.position = Vector3.Lerp(originalPos, targetPos, travelTime);
+
+        if (travelTime > travelDuration)
+            Destroy(gameObject);
+    }
+
+    public void GoToPosition(Vector3 pos)
+    {
+        targetPos = pos;
+        originalPos = transform.position;
+        travelTime = 0f;
+        swappingPosition = true;
     }
 
 }

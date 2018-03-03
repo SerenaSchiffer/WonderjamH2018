@@ -116,12 +116,18 @@ public class IngredientInstantiator : MonoBehaviour
             {
                 if(allBoxesOfPlayer[i].GetComponent<Box>().myItem == null)
                 {
-                    allBoxesOfPlayer[i].GetComponent<Box>().myItem = RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>().myItem;
-                    Destroy(RightSetOfIngredients.transform.GetChild(j).gameObject);
+                    StartCoroutine(PutItemInBox(allBoxesOfPlayer[i].GetComponent<Box>(), RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>()));
+                    RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>().GoToPosition(allBoxesOfPlayer[i].transform.position);    
                     j++;
                 }
             }
 
+    }
+
+    IEnumerator PutItemInBox(Box box, Item item)
+    {
+        yield return new WaitForSeconds(1f);
+        box.myItem = item.myItem;
     }
 }
 
