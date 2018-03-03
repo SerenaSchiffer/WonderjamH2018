@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Melange")]
-public class Melange : ScriptableObject {
+public class Melange : PickableItem {
     public static Ingredient[] ingredients;
 
     public Queue<Ingredient> mesIngredients;
