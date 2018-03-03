@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
+  useKeyboard: 1
 --- !u!95 &1275642548
 Animator:
   serializedVersion: 3

@@ -27,7 +27,10 @@ public class PlayerController : MonoBehaviour {
         
         if(hit.collider != null)
         {
-
+            if (hit.collider.gameObject.tag == "Interactable")
+            {
+                //Do Something
+            }
         }
     }
 
