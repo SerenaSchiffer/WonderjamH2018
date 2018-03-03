@@ -17,6 +17,7 @@ public class Client : MonoBehaviour {
     Animator animator;
     float timer;
     bool hasArrived;
+    bool isContent = false;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +30,7 @@ public class Client : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(rb.velocity);
         if (timer >= (maxTimer / 3) * 2)
         {
             animator.SetBool("Idle", true);
@@ -45,23 +47,34 @@ public class Client : MonoBehaviour {
         }
         else
         {
-            if (hasArrived)
-            {
-                ExitShop();
+            ExitShop();
+        }
 
-                
+        if(isContent)
+        {
+            //TODO donner plus d'argent si content
+            if(!animator.GetBool("Angry"))
+            {
+                animator.SetBool("Joy", true);
+                animator.SetBool("Annoyed", false);
+                animator.SetBool("Idle", false);
             }
+            ExitShop();
+
         }
 
         if (hasArrived)
             timer -= Time.deltaTime;
 
-        if (!IsInFrontOfSomething())
+        if(!isContent)
         {
-            hasArrived = true;
-            rb.velocity = new Vector2(0, -1);
+            if (!IsInFrontOfSomething())
+            {
+                hasArrived = true;
+                rb.velocity = new Vector2(0, -1);
+            }
         }
-	}
+    }
 
 
     private void ExitShop()
@@ -88,7 +101,10 @@ public class Client : MonoBehaviour {
             
 
             if (hit.collider.gameObject.layer == 8)
+            {
                 myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
+                isContent = myCounter.InteractWithClient(melangeClient);
+            }
             else if (hit.collider.gameObject.layer == 10)
                 myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
 

@@ -15,7 +15,15 @@ public class ClientSpawner : MonoBehaviour {
 	void Start () {
         timer = spawnTimer;
         objectsReferences = GetComponent<InstantiableObjectContainer>();
-	}
+        Transform selectedCounter = targets.transform.GetChild(0);
+        if (selectedCounter.GetComponent<ServiceCounter>().GetQueueCount() < 2)
+        {
+            target = selectedCounter.gameObject;
+            Vector3 spawnPosition = new Vector3(target.transform.position.x, transform.position.y, 0);
+            GameObject newClient = Instantiate(objectsReferences.Client, spawnPosition, new Quaternion()); //TODO donner un rotation qui a de l'allure
+            newClient.transform.parent = objectsReferences.ContainerClients.transform;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
