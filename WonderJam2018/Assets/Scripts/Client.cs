@@ -61,10 +61,6 @@ public class Client : MonoBehaviour {
             hasArrived = true;
             rb.velocity = new Vector2(0, -1);
         }
-        else
-        {
-            if ()
-        }
 	}
 
 
