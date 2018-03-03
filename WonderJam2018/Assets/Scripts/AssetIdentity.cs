@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxIdentity : MonoBehaviour {
+public class AssetIdentity : MonoBehaviour {
 
     [SerializeField] int playerIdentity = 0;
 	// Use this for initialization
@@ -13,6 +13,11 @@ public class BoxIdentity : MonoBehaviour {
     public int GetPlayerIdentity()
     {
         return playerIdentity;
+    }
+
+    public void SetPlayerIdentity(int newIdentity)
+    {
+        playerIdentity = newIdentity;
     }
 	
 	// Update is called once per frame

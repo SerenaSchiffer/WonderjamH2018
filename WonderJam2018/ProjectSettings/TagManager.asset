@@ -8,6 +8,7 @@ TagManager:
   - ClientTarget
   - Potion
   - Box
+  - IngredientsLoose
   layers:
   - Default
   - TransparentFX
