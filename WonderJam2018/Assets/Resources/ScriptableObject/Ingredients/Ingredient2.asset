@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b2dc94ce428cf488e0540ca0d5264a, type: 3}
   m_Name: Ingredient2
   m_EditorClassIdentifier: 
+  ingredientName: CarreRouge
   ingredientSprite: {fileID: 21300000, guid: 286a5ca005cc11341bab6d48494d4ddf, type: 3}
   baseIngredientValue: 7
   mainColor: {r: 1, g: 0, b: 0, a: 1}
