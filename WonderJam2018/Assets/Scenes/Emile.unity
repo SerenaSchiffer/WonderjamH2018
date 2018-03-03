@@ -545,7 +545,12 @@ Prefab:
     - target: {fileID: 114788919124278020, guid: 24399e22beadfbb469e2b9363ad19965,
         type: 2}
       propertyPath: cookTime
-      value: 3
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788919124278020, guid: 24399e22beadfbb469e2b9363ad19965,
+        type: 2}
+      propertyPath: burnTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
@@ -1160,6 +1165,10 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4427860391262976, guid: bb983908439ad1b41bb7ab3e9931a22c, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500479741272632, guid: bb983908439ad1b41bb7ab3e9931a22c, type: 2}
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
