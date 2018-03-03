@@ -4,19 +4,66 @@ using UnityEngine;
 
 public class Item : Interactable {
 
+    Ingredient myItem;
 	// Use this for initialization
 	void Start () {
-		
+        base.Start();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        base.Update();
 	}
 
-    public override PickableItem InteractWithPlayer(PickableItem item)
+    void AutoDestroy()
     {
-        return null; //Delete that shit
+        Destroy(gameObject);
+    }
+
+    public void SetItem(Ingredient newIngredient)
+    {
+        myItem = newIngredient;
+    }
+
+    void ResetSprite(Ingredient item)
+    {
+        if (item == null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = item.mySprite;
+        }
+        
+    }
+    
+
+    public override PickableItem InteractWithPlayer(PickableItem playerItem)
+    {
+        gameObject.GetComponent<Interactable>().Highlight();
+        if (playerItem as Ingredient == null)
+        {
+            Ingredient temp = myItem;
+            ResetSprite(null);
+            Invoke("AutoDestroy", 0.05f);
+            return temp;
+
+
+
+        }
+
+        if(playerItem as Ingredient != null)
+        {
+            Ingredient tempVar = myItem;
+            myItem = (Ingredient)playerItem;
+            ResetSprite(myItem);
+            return tempVar;
+            
+        }else
+        {
+            return myItem;
+        }
     }
 
 }
