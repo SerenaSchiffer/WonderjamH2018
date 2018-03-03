@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class Client : MonoBehaviour {
 
     public Melange melangeRef;
+    
+    [HideInInspector] public Melange melangeClient;
 
-    Melange melangeClient;
     Rigidbody2D rb;
     bool atPosition;
     InstantiableObjectContainer objectsReferences;
@@ -18,29 +19,17 @@ public class Client : MonoBehaviour {
         atPosition = false;
         rb = GetComponent<Rigidbody2D>();
         objectsReferences = GetComponent<InstantiableObjectContainer>();
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         
-        if (atPosition)
-        {
-            if (VerifyIfMelangeIsReady())
-            {
-                //Destroy melange object
-
-            }
-        }
-        else
+        if (!atPosition)
             rb.velocity = new Vector2(0, -1);
 	}
 
-    private bool VerifyIfMelangeIsReady()
-    {
-        //TODO Getter toutes les mélanges sur le tapis.
-
-        return true;
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -50,6 +39,12 @@ public class Client : MonoBehaviour {
             GenerateRecipe();
             atPosition = true;
             other.GetComponent<Targets>().SetOccupied();
+        }
+        
+        if (other.tag == "Potion")
+        {
+            Destroy(other);
+            rb.velocity = new Vector2(1, 0);
         }
     }
 
