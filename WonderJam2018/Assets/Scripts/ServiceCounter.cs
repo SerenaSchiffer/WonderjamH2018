@@ -14,7 +14,7 @@ public class ServiceCounter : Interactable {
     
     Queue<GameObject> clientsEnFile;
 
-    [HideInInspector] public GameObject potion;  //TODO: pt changer le type
+    [HideInInspector] public Melange potion;
 
 	// Use this for initialization
 	public override void Start () {
@@ -62,6 +62,7 @@ public class ServiceCounter : Interactable {
     {
         if(playerItem as Melange != null)
         {
+            potion = (Melange)playerItem;
             return null;
         }
         else
