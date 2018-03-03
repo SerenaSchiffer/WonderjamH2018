@@ -19,8 +19,10 @@ public class UIManager : MonoBehaviour {
 
     Vector3 basePosition1, basePosition2, goal1, goal2;
     public bool test = false;
-    public float lerpSpeed = 0.05f;
+    public float lerpSpeed;
     float timer = 0;
+    public float swapFraction = 0.25f;
+    float swapValue;
 
 
 	// Use this for initialization
@@ -30,6 +32,7 @@ public class UIManager : MonoBehaviour {
         goal1 = basePosition1;
         goal2 = basePosition2;
         clockImage.transform.rotation = new Quaternion(0, 0, 0, 0);
+        swapValue = swapFraction;
     }
 	
 	// Update is called once per frame
@@ -38,12 +41,21 @@ public class UIManager : MonoBehaviour {
         {
             SwapUI();
             test = false;
-            lerpSpeed = 0.01f;
+            //lerpSpeed = 0.01f;
         }
         LookPosition();
-        lerpSpeed += 0.03f;
+        //lerpSpeed += 0.03f;
         timer += Time.deltaTime;
         UpdateTimerImage();
+        if(timer/maxTimer > swapValue)
+        {
+            swapValue += swapFraction;
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                go.GetComponent<PlayerController>().SwapPositions();
+            }
+            SwapUI();
+        }
 	}
 
     void SwapUI()
@@ -56,9 +68,9 @@ public class UIManager : MonoBehaviour {
 
     void LookPosition()
     {
-        float newX1 = Mathf.Lerp(player1Text.transform.position.x, goal1.x, lerpSpeed * Time.deltaTime);
+        float newX1 = Mathf.Lerp(player1Text.transform.position.x, goal1.x, lerpSpeed /* * Time.deltaTime*/);
         player1Text.transform.position = new Vector2(newX1, player1Text.transform.position.y);
-        float newX2 = Mathf.Lerp(player2Text.transform.position.x, goal2.x, lerpSpeed * Time.deltaTime);
+        float newX2 = Mathf.Lerp(player2Text.transform.position.x, goal2.x, lerpSpeed /* * Time.deltaTime*/);
         player2Text.transform.position = new Vector2(newX2, player2Text.transform.position.y);
     }
 
