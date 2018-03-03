@@ -147,7 +147,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ClientA_Idle
+  m_Name: ClientC_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -160,7 +160,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d3c49b9015d8c1e498a83b6afb4807a9, type: 2}
+  m_Motion: {fileID: 7400000, guid: 43157cd09d4338d4eb2800b7141e7ff6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
