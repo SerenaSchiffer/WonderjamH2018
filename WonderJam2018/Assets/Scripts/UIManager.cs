@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour {
         basePosition2 = player2Text.transform.position;
         goal1 = basePosition1;
         goal2 = basePosition2;
+        clockImage.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 	
 	// Update is called once per frame
@@ -68,6 +69,9 @@ public class UIManager : MonoBehaviour {
 
     void UpdateTimerImage()
     {
-        clockImage.fillAmount = 1 - timer/maxTimer;
-    }
+        float degreeRatio = (timer / maxTimer * 360);
+        Quaternion rotation = clockImage.transform.rotation;
+        rotation = Quaternion.AngleAxis(degreeRatio, Vector3.back);
+        clockImage.transform.rotation = Quaternion.Lerp(clockImage.transform.rotation, rotation, 1);
+    }    
 }
