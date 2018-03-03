@@ -29,8 +29,7 @@ public class ServiceCounter : Interactable {
 
     public void AddClientToQueue(GameObject newClient)
     {
-        if (clientsEnFile.Count < 2)
-            clientsEnFile.Enqueue(newClient);
+        clientsEnFile.Enqueue(newClient);
     }
 
     public void PopClientFromQueue()
