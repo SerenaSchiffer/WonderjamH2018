@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour {
         }
 	}
 
-    public virtual Ingredient InteractWithPlayer(Ingredient item)
+    public virtual PickableItem InteractWithPlayer(PickableItem item)
     {
         return null;
     }

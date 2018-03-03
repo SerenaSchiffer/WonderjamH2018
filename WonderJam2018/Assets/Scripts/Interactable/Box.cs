@@ -27,35 +27,45 @@ public class Box : Interactable {
         }
 	}
 
-    public override Ingredient InteractWithPlayer(Ingredient playerItem)
+    public override PickableItem InteractWithPlayer(PickableItem playerItem)
     {
-        if(playerItem != null)
+        if (playerItem as Ingredient != null)
         {
-            if(myItem == null)
+            if (playerItem != null)
             {
-                myItem = playerItem;
-                return null;
+                if (myItem == null)
+                {
+                    myItem = (Ingredient)playerItem;
+                    return null;
+                }
+                else
+                {
+                    Ingredient temp = null;
+                    temp = myItem;
+                    myItem = (Ingredient)playerItem;
+                    return temp;
+                }
             }
             else
-            {
-                Ingredient temp = null;
-                temp = myItem;
-                myItem = playerItem;
-                return temp;
+            {                
+                    return null;
             }
+
+        }
+        else if (playerItem as Melange != null)
+        {
+            return null;
         }
         else
         {
-            if(myItem != null)
+            
+            if (myItem != null)
             {
-                Ingredient temp = myItem;
-                myItem = null;
-                return temp;
+            Ingredient temp = myItem;
+            myItem = null;
+            return temp;
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 }

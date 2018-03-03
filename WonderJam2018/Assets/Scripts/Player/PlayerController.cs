@@ -6,10 +6,11 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] int player;
     [SerializeField] bool useKeyboard;
-    public Ingredient myItem;
+    public PickableItem myItem;
     [SerializeField]
     float speed = 1;
     SpriteRenderer itemRenderer;
+    SpriteRenderer potionContentRenderer;
     Animator myAnim;
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        potionContentRenderer = transform.GetChild(1).GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
         myAnim.SetBool("FaceFront", true);
         rb2d = GetComponent<Rigidbody2D>();
@@ -89,11 +91,25 @@ public class PlayerController : MonoBehaviour {
         {
             if (myItem != null)
             {
-                itemRenderer.sprite = myItem.mySprite;
+                if(myItem as Ingredient != null)
+                {
+                    itemRenderer.gameObject.SetActive(true);
+                    potionContentRenderer.transform.parent.gameObject.SetActive(false);
+                    itemRenderer.sprite = myItem.mySprite;
+                }
+                else if(myItem as Melange != null)
+                {
+                    itemRenderer.gameObject.SetActive(false);
+                    potionContentRenderer.transform.parent.gameObject.SetActive(true);
+                    potionContentRenderer.color = ((Melange)myItem).MelangeColor();
+                }
             }
             else
             {
                 itemRenderer.sprite = null;
+                potionContentRenderer.color = Color.white;
+                itemRenderer.gameObject.SetActive(false);
+                potionContentRenderer.transform.parent.gameObject.SetActive(false);
             }
 
             DoRaycast(!WillInteract);

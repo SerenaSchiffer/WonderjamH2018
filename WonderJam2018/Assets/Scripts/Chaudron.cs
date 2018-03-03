@@ -53,30 +53,34 @@ public class Chaudron : Interactable {
             FinishCooking();
     }
 
-    override public Ingredient InteractWithPlayer(Ingredient playerItem)
+    override public PickableItem InteractWithPlayer(PickableItem playerItem)
     {
-        if(playerItem == null)
+        if (playerItem as Ingredient != null)
         {
-                
-            
-            switch(state)
-                {
+            AddIngredient((Ingredient)playerItem);
+            return playerItem;
+        }
+        else if (playerItem == null)
+        {
+
+
+            switch (state)
+            {
                 case ChaudronStates.Preparation:
-                        StartCooking();
-                        break;
+                    StartCooking();
+                    return playerItem;
                 case ChaudronStates.Cooking:
-                        Mix();
-                        break;
+                    Mix();
+                    return playerItem;
                 case ChaudronStates.Finished:
-                        FinishCooking();
-                        break;
-                }
+                    return EmptyChaudron();
+                default:
+                    return null;
+            }
         }
         else
-        {
-            AddIngredient(playerItem);
-        }
-        return playerItem;
+            return null;
+
 
     }
 
@@ -140,15 +144,17 @@ public class Chaudron : Interactable {
     }
     
     //Cooking time fini
-    private void EmptyChaudron()
+    private Melange EmptyChaudron()
     {
         // TODO : Gérer de servir le mélange
-
-        Destroy(myMelange);
+        Melange temp = myMelange;
+        myMelange = null;
         myMelange = Instantiate<Melange>(melangeRef);
         cookTime = originalCookTime;
         burnTime = originalBurnTime;
         state = ChaudronStates.Preparation;
+        myAnimator.SetTrigger("Empty");
+        return temp;
     }
 
     private void DebugAllIngredients()
