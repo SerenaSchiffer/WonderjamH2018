@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50506833072481192}
   - component: {fileID: 114889290107345632}
   - component: {fileID: 114526277351792142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Client
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,6 +95,8 @@ MonoBehaviour:
     type: 2}
   ImageIngredientUI: {fileID: 1170251402621720, guid: fc656c30781b76c4889471b9698e49f7,
     type: 2}
+  ContainerClients: {fileID: 0}
+  Potion: {fileID: 0}
 --- !u!114 &114889290107345632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
+  melangeClient: {fileID: 0}
 --- !u!212 &212059636527251528
 SpriteRenderer:
   m_ObjectHideFlags: 1

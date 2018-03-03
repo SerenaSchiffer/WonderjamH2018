@@ -20,9 +20,11 @@ public class CompletedOrderCounter : MonoBehaviour {
 
 		if (matchingClient)
         {
-            GameObject newPotion = Instantiate(objectsReferences.Potion);
+            //GameObject newPotion = Instantiate(objectsReferences.Potion);
             //newPotion.GetComponent<SpriteRenderer>().sprite = SpriteResultant de la potion #scriptableoject
-            newPotion.GetComponent<Rigidbody2D>().velocity = (matchingClient.transform.position - newPotion.transform.position).normalized;
+            //newPotion.GetComponent<Rigidbody2D>().velocity = (matchingClient.transform.position - newPotion.transform.position).normalized;
+
+            //TODO: gérer une file par chaudron
         }
 	}
 

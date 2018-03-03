@@ -7,6 +7,8 @@ public class ServiceCounter : MonoBehaviour {
     bool occupied;
     Queue<GameObject> clientsEnFile;
 
+    [HideInInspector] public GameObject potion;  //TODO: pt changer le type
+
 	// Use this for initialization
 	void Start () {
         occupied = false;
@@ -26,11 +28,27 @@ public class ServiceCounter : MonoBehaviour {
 
     public void PopClientFromQueue()
     {
-        occupied = false;
+        clientsEnFile.Dequeue();
     }
 
     public bool IsQueueFull()
     {
-        return occupied;
+        if (clientsEnFile.Count == 2)
+            return true;
+        else
+            return false;
+    }
+
+    public int GetQueueCount()
+    {
+        return clientsEnFile.Count;
+    }
+    
+    public bool DoesQueueContain(GameObject client)
+    {
+        if (clientsEnFile.Contains(client))
+            return true;
+        else
+            return false;
     }
 }

@@ -24,10 +24,12 @@ public class ClientSpawner : MonoBehaviour {
 
 		if (timer <= 0)
         {
-            foreach(Transform child in targets.transform)
+            int rdmIndex = Random.Range(0, 2);
+
+            Transform selectedCounter = targets.transform.GetChild(rdmIndex);
+            if (!selectedCounter.GetComponent<ServiceCounter>().IsQueueFull())
             {
-                if (!child.GetComponent<ServiceCounter>().IsQueueFull())
-                    target = child.gameObject;
+                target = selectedCounter.gameObject;
             }
 
             if (target)

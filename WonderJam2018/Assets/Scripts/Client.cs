@@ -9,6 +9,7 @@ public class Client : MonoBehaviour {
     public Melange melangeRef;
     
     [HideInInspector] public Melange melangeClient;
+    [HideInInspector] public ServiceCounter myCounter;
 
     Rigidbody2D rb;
     bool atPosition;
@@ -25,50 +26,52 @@ public class Client : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if (!atPosition)
+        if (!IsInFrontOfSomething())
             rb.velocity = new Vector2(0, -1);
 	}
 
-    
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private bool IsInFrontOfSomething()
     {
-        if (other.tag == "ClientTarget")
+        int layerMask = LayerMask.GetMask(new String[] { "Interactable", "ObjectToStopClient" });
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -1f), 0.2f, layerMask);
+        Debug.DrawRay(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -0.2f));
+
+        //GameObject other = hit.collider.gameObject;
+        if (hit.collider != null)
         {
             rb.velocity = Vector2.zero;
             GenerateRecipe();
-            atPosition = true;
-            other.GetComponent<ServiceCounter>().AddClientToQueue(other.gameObject);
-        }
-        
-        if (other.tag == "Potion")
-        {
-            Destroy(other);
-            rb.velocity = new Vector2(1, 0);
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "ClientTarget")
-        {
-            atPosition = false;
-            other.GetComponent<ServiceCounter>().PopClientFromQueue();
+            if(hit.collider.gameObject.layer == 8)
+                myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
+            else if (hit.collider.gameObject.layer == 10)
+                myCounter = hit.collider.GetComponent<Client>().myCounter;
+
+            if (!myCounter.DoesQueueContain(gameObject))
+                myCounter.AddClientToQueue(gameObject);
+
+            return true;
         }
+
+        return false;
     }
 
     private void GenerateRecipe()
     {
-        melangeClient = Instantiate<Melange>(melangeRef);
-        melangeClient.GenerateRandomRecipe();
-        
-        GameObject melangeClientPopup = Instantiate(objectsReferences.MelangeClientPopup);
-        melangeClientPopup.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        if (!melangeClient)
+        {
+            melangeClient = Instantiate<Melange>(melangeRef);
+            melangeClient.GenerateRandomRecipe();
 
-        AddIngredientToPopup(melangeClientPopup);
 
-        Vector2 spawnPosition = new Vector2(transform.position.x - melangeClientPopup.transform.lossyScale.x, transform.position.y + 1f);
-        melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(spawnPosition);
+            GameObject melangeClientPopup = Instantiate(objectsReferences.MelangeClientPopup);
+            melangeClientPopup.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+            AddIngredientToPopup(melangeClientPopup);
+
+            Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);
+            melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(spawnPosition);
+        }
     }
 
     private void AddIngredientToPopup(GameObject melangeClientPopup)
