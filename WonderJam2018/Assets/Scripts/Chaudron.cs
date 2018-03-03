@@ -30,6 +30,7 @@ public class Chaudron : Interactable {
 
     private void Start()
     {
+        base.Start();
         myMelange = Instantiate<Melange>(melangeRef);
 
         originalCookTime = cookTime;
@@ -41,6 +42,7 @@ public class Chaudron : Interactable {
 
     public void Update()
     {
+        base.Update();
         if (state != ChaudronStates.Cooking)
             return;
         burnTime -= Time.deltaTime;

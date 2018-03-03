@@ -32,7 +32,6 @@ public class Interactable : MonoBehaviour {
      
     public virtual void Highlight()
     {
-        Debug.Log("woah!");
         highlightBuffer = 3;
     }
     
