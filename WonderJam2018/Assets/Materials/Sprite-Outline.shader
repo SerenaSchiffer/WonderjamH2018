@@ -78,11 +78,9 @@ Shader "Unlit/Sprite-Outline"
 
 			}
 
-			if (totalAlpha == 0 && c.a < 1 && sumAlpha > 0.2) {
-				c.rgba = fixed4(1, 1, 1, (1-c.a)) * _OutlineColor;
-				
+			if (totalAlpha == 0 && sumAlpha > 2) {
+				c.rgba = fixed4(1, 1, 1, 1) * _OutlineColor;				
 			}
-
 
 
 
