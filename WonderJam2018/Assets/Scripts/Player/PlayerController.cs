@@ -10,14 +10,20 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     float speed = 1;
     SpriteRenderer itemRenderer;
-
+    Animator myAnim;
+    Rigidbody2D rb2d;
+    SpriteRenderer spriteRenderer;
     const bool WillInteract = true;
-
+    
     Vector2 directionToRaycast;
 
 	// Use this for initialization
 	void Start () {
         itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        myAnim = GetComponent<Animator>();
+        myAnim.SetBool("FaceFront", true);
+        rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 	
     void SetVelocity(Vector2 basicSpeed)
@@ -136,6 +142,43 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+
+    private void LateUpdate()
+    {
+        // Send Animator Value
+        myAnim.SetBool("Holding", (myItem != null) );
+        myAnim.SetBool("Walking", rb2d.velocity.magnitude > 0);
+
+        if(directionToRaycast.x != 0)
+        {
+            myAnim.SetBool("FaceFront", false);
+            myAnim.SetBool("FaceSide", true);
+            myAnim.SetBool("FaceBack", false);
+
+            if (directionToRaycast.x > 0)
+                spriteRenderer.flipX = true;
+            else
+                spriteRenderer.flipX = false;
+            return;
+        }
+
+        if (directionToRaycast.y > float.Epsilon)
+        {
+            myAnim.SetBool("FaceFront", false);
+            myAnim.SetBool("FaceSide", false);
+            myAnim.SetBool("FaceBack", true);
+            return;
+        }
+
+        if (directionToRaycast.y < float.Epsilon)
+        {
+            myAnim.SetBool("FaceFront", true);
+            myAnim.SetBool("FaceSide", false);
+            myAnim.SetBool("FaceBack", false);
+            return;
+        }
+
+    }
 
 }
 
