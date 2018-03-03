@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4593237585232600}
   - component: {fileID: 212861019892887002}
   - component: {fileID: 61632110783092342}
-  - component: {fileID: 50322257206692934}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Potion
@@ -42,26 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50322257206692934
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1044209714873084}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!61 &61632110783092342
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -121,7 +100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0957edec1e24174cb5491ca2db5024e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cdb2dc1934be014ba672c531a1f977f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
