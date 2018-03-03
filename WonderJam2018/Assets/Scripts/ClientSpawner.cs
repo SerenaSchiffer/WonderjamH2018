@@ -27,13 +27,9 @@ public class ClientSpawner : MonoBehaviour {
             int rdmIndex = Random.Range(0, 2);
 
             Transform selectedCounter = targets.transform.GetChild(rdmIndex);
-            if (!selectedCounter.GetComponent<ServiceCounter>().IsQueueFull())
+            if (selectedCounter.GetComponent<ServiceCounter>().GetQueueCount() < 2)
             {
                 target = selectedCounter.gameObject;
-            }
-
-            if (target)
-            {
                 Vector3 spawnPosition = new Vector3(target.transform.position.x, transform.position.y, 0);
                 GameObject newClient = Instantiate(objectsReferences.Client, spawnPosition, new Quaternion()); //TODO donner un rotation qui a de l'allure
                 newClient.transform.parent = objectsReferences.ContainerClients.transform;

@@ -7,27 +7,63 @@ using UnityEngine.UI;
 public class Client : MonoBehaviour {
 
     public Melange melangeRef;
+    public float maxTimer;
     
     [HideInInspector] public Melange melangeClient;
     [HideInInspector] public ServiceCounter myCounter;
 
     Rigidbody2D rb;
-    bool atPosition;
     InstantiableObjectContainer objectsReferences;
+    Animator animator;
+    float timer;
+    bool hasArrived;
 
     // Use this for initialization
     void Start () {
-        atPosition = false;
+        timer = maxTimer;
+        hasArrived = false;
         rb = GetComponent<Rigidbody2D>();
         objectsReferences = GetComponent<InstantiableObjectContainer>();
-
+        animator = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (timer >= (maxTimer / 3) * 2)
+        {
+            animator.SetBool("Idle", true);
+        }
+        else if (timer >= (maxTimer / 3) && timer < (maxTimer / 3) * 2)
+        {
+            animator.SetBool("Annoyed", true);
+            animator.SetBool("Idle", false);
+        }
+        else if (timer >= 0 && timer < (maxTimer / 3))
+        {
+            animator.SetBool("Angry", true);
+            animator.SetBool("Annoyed", false);
+        }
+        else
+        {
+            if (hasArrived)
+            {
+                if (myCounter.side == CounterSide.Left)
+                    rb.velocity = new Vector2(-1f, 0f);
+                else
+                    rb.velocity = new Vector2(1f, 0f);
+
+                Invoke("AutoDestroy", 1f);
+            }
+        }
+
+        if (hasArrived)
+            timer -= Time.deltaTime;
+
         if (!IsInFrontOfSomething())
+        {
+            hasArrived = true;
             rb.velocity = new Vector2(0, -1);
+        }
 	}
 
     private bool IsInFrontOfSomething()
@@ -41,11 +77,12 @@ public class Client : MonoBehaviour {
         {
             rb.velocity = Vector2.zero;
             GenerateRecipe();
+            
 
-            if(hit.collider.gameObject.layer == 8)
+            if (hit.collider.gameObject.layer == 8)
                 myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
             else if (hit.collider.gameObject.layer == 10)
-                myCounter = hit.collider.GetComponent<Client>().myCounter;
+                myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
 
             if (!myCounter.DoesQueueContain(gameObject))
                 myCounter.AddClientToQueue(gameObject);
@@ -83,5 +120,10 @@ public class Client : MonoBehaviour {
 
             ingredientImage.GetComponent<Image>().sprite = ingredient.mySprite;
         }
+    }
+
+    private void AutoDestroy()
+    {
+        Destroy(gameObject);
     }
 }
