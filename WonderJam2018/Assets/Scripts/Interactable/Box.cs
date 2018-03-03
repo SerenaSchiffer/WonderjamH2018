@@ -19,7 +19,7 @@ public class Box : Interactable {
         base.Update();
 		if(myItem != null)
         {
-            itemRenderer.sprite = myItem.ingredientSprite;
+            itemRenderer.sprite = myItem.mySprite;
         }
         else
         {

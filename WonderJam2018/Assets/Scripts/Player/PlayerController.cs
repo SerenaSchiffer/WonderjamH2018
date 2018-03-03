@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (myItem != null)
             {
-                itemRenderer.sprite = myItem.ingredientSprite;
+                itemRenderer.sprite = myItem.mySprite;
             }
             else
             {

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b2dc94ce428cf488e0540ca0d5264a, type: 3}
   m_Name: Blueberry
   m_EditorClassIdentifier: 
+  mySprite: {fileID: 21300000, guid: 536ed2e358f424145b9ca055e7851342, type: 3}
   ingredientName: Blueberry
-  ingredientSprite: {fileID: 21300000, guid: 536ed2e358f424145b9ca055e7851342, type: 3}
   baseIngredientValue: 4
   mainColor: {r: 0, g: 0.12043613, b: 0.6985294, a: 1}

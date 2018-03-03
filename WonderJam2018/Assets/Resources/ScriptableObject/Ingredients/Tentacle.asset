@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b2dc94ce428cf488e0540ca0d5264a, type: 3}
   m_Name: Tentacle
   m_EditorClassIdentifier: 
+  mySprite: {fileID: 21300000, guid: 99617ef78ea4c0748b79c95073694bf0, type: 3}
   ingredientName: Tentacle
-  ingredientSprite: {fileID: 21300000, guid: 99617ef78ea4c0748b79c95073694bf0, type: 3}
   baseIngredientValue: 10
   mainColor: {r: 0.2830958, g: 0.2640571, b: 0.8161765, a: 1}

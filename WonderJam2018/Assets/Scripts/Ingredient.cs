@@ -6,7 +6,6 @@ using UnityEngine;
 public class Ingredient : PickableItem {
 
     public string ingredientName;
-    public Sprite ingredientSprite;
     public int baseIngredientValue;
     public Color mainColor;
 }

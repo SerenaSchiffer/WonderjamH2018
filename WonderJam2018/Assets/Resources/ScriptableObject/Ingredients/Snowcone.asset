@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b2dc94ce428cf488e0540ca0d5264a, type: 3}
   m_Name: Snowcone
   m_EditorClassIdentifier: 
+  mySprite: {fileID: 21300000, guid: 05471509a8df75d4db45220668edc9c4, type: 3}
   ingredientName: Snowcone
-  ingredientSprite: {fileID: 21300000, guid: 05471509a8df75d4db45220668edc9c4, type: 3}
   baseIngredientValue: 12
   mainColor: {r: 0.9117647, g: 0.54303634, b: 0.54303634, a: 1}

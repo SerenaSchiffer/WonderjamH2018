@@ -91,7 +91,7 @@ public class Chaudron : Interactable {
                 GameObject ingredientImage = (GameObject)Instantiate(Resources.Load("Prefabs/ImageUI"));
                 ingredientImage.transform.SetParent(UIChaudron.transform, false);
 
-                ingredientImage.GetComponent<Image>().sprite = i.ingredientSprite;
+                ingredientImage.GetComponent<Image>().sprite = i.mySprite;
             }
 }
     }

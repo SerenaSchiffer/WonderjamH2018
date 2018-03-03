@@ -78,7 +78,7 @@ public class Client : MonoBehaviour {
             GameObject ingredientImage = Instantiate(objectsReferences.ImageIngredientUI);
             ingredientImage.transform.SetParent(melangeClientPopup.transform, false);
 
-            ingredientImage.GetComponent<Image>().sprite = ingredient.ingredientSprite;
+            ingredientImage.GetComponent<Image>().sprite = ingredient.mySprite;
         }
     }
 }
