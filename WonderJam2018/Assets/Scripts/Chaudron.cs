@@ -77,8 +77,11 @@ public class Chaudron : Interactable {
     //If objet dans les mains
     public void AddIngredient(Ingredient i)
     {
-        myMelange.AddIngredient(i);
-        //TODO : Add Ingredient Icon
+        if (state == ChaudronStates.Preparation)
+        {
+            myMelange.AddIngredient(i);
+            //TODO : Add Ingredient Icon
+        }
     }
 
     public int NumberOfIngredients()
