@@ -14,7 +14,7 @@ public class Item : Interactable {
 		
 	}
 
-    public override Ingredient InteractWithPlayer(Ingredient item)
+    public override PickableItem InteractWithPlayer(PickableItem item)
     {
         return null; //Delete that shit
     }
