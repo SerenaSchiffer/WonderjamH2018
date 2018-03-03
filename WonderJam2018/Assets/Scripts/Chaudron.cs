@@ -28,7 +28,7 @@ public class Chaudron : Interactable {
 
     public const int maxIngredient = 3;
 
-    private void Start()
+    public override void Start()
     {
         base.Start();
         myMelange = Instantiate<Melange>(melangeRef);
@@ -40,7 +40,7 @@ public class Chaudron : Interactable {
         myAnimator = GetComponent<Animator>();
     }
 
-    public void Update()
+    public override void Update()
     {
         base.Update();
         if (state != ChaudronStates.Cooking)
