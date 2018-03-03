@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Box : Interactable {
 
-    [SerializeField ]Ingredient myItem;
+    public Ingredient myItem;
     SpriteRenderer itemRenderer;
     SpriteRenderer parentRenderer;
 
@@ -71,14 +71,17 @@ public class Box : Interactable {
         }
     }
 
-    public override void Highlight()
+    public override void Highlight(PickableItem playerItem)
     {
-        base.Highlight();
-
+        if(playerItem as Melange == null)
+        {
+            base.Highlight(playerItem);
+        }
     }
 
     public int GetHighlight()
     {
+
         return highlightBuffer;
     }
 }

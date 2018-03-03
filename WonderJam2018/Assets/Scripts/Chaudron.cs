@@ -81,7 +81,7 @@ public class Chaudron : Interactable {
             }
         }
         else
-            return null;
+            return playerItem;
 
 
     }
@@ -172,6 +172,29 @@ public class Chaudron : Interactable {
         for (int i = 0; i < UIChaudron.transform.childCount; i++)
         {
             Destroy(UIChaudron.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public override void Highlight(PickableItem playerItem)
+    {
+        if (playerItem != null)
+        {       
+            if (playerItem as Melange == null)
+            {
+                if(NumberOfIngredients() < maxIngredient)
+                {
+                    if(playerItem as Ingredient != null && state == ChaudronStates.Preparation)
+                        base.Highlight(playerItem);
+                }
+
+            }
+        }
+        else
+        {
+            if(NumberOfIngredients() > 0)
+            {
+                base.Highlight(playerItem);
+            }
         }
     }
 }

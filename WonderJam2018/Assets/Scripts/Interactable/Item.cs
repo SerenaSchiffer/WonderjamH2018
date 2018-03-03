@@ -41,7 +41,6 @@ public class Item : Interactable {
 
     public override PickableItem InteractWithPlayer(PickableItem playerItem)
     {
-        gameObject.GetComponent<Interactable>().Highlight();
         if (playerItem as Ingredient == null)
         {
             Ingredient temp = myItem;
@@ -63,6 +62,14 @@ public class Item : Interactable {
         }else
         {
             return myItem;
+        }
+    }
+
+    public override void Highlight(PickableItem playerItem)
+    {
+        if (playerItem as Melange == null)
+        {
+            base.Highlight(playerItem);
         }
     }
 
