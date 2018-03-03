@@ -20,12 +20,13 @@ public class ClientSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Debug.Log(timer);
+        target = null;
 
 		if (timer <= 0)
         {
             foreach(Transform child in targets.transform)
             {
-                if (!child.GetComponent<Targets>().IsOccupied())
+                if (!child.GetComponent<ServiceCounter>().IsQueueFull())
                     target = child.gameObject;
             }
 
