@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
-  cookTime: 10
-  burnTime: 1
+  cookTime: 25
+  burnTime: 10
 --- !u!212 &212329439339842062
 SpriteRenderer:
   m_ObjectHideFlags: 1

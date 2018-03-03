@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114589139565717586}
   - component: {fileID: 114895472715609370}
   m_Layer: 5
-  m_Name: RecetteClient
+  m_Name: RecetteClient 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
