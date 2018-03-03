@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaudron : MonoBehaviour {
+public class Chaudron : Interactable {
     /* "State Machine" */
     private enum ChaudronStates
     {
@@ -48,6 +48,33 @@ public class Chaudron : MonoBehaviour {
             FinishCooking();
     }
 
+    override public void InteractWithPlayer(Ingredient item)
+    {
+        if(item == null)
+        {
+                
+            
+            switch(state)
+                {
+                case ChaudronStates.Preparation:
+                        StartCooking();
+                        break;
+                case ChaudronStates.Cooking:
+                        Mix();
+                        break;
+                case ChaudronStates.Finished:
+                        FinishCooking();
+                        break;
+                }
+        }
+        else
+        {
+            AddIngredient(item);
+        }
+
+    }
+
+    //If objet dans les mains
     public void AddIngredient(Ingredient i)
     {
         myMelange.AddIngredient(i);
@@ -59,6 +86,8 @@ public class Chaudron : MonoBehaviour {
         return myMelange.mesIngredients.Count;
     }
 
+
+    //Rien dans les mains et pas commencé de cooking
     public void StartCooking()
     {
         if (NumberOfIngredients() > 0)
@@ -68,6 +97,7 @@ public class Chaudron : MonoBehaviour {
             myAnimator.SetTrigger("StartCooking");
         }
     }
+
 
     private void Burn()
     {
@@ -81,7 +111,7 @@ public class Chaudron : MonoBehaviour {
     }
 
     
-
+    //Is cooking 
     public void Mix()
     {
         burnTime = originalBurnTime;
@@ -94,6 +124,7 @@ public class Chaudron : MonoBehaviour {
         myAnimator.SetTrigger("FinishCooking");
     }
     
+    //Cooking time fini
     private void EmptyChaudron()
     {
         // TODO : Gérer de servir le mélange
