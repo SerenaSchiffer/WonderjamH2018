@@ -568,6 +568,22 @@ Prefab:
       propertyPath: myItem
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4431666176732820, guid: d80039318d3226441aaada53041bc777, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431666176732820, guid: d80039318d3226441aaada53041bc777, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644232021305952, guid: d80039318d3226441aaada53041bc777, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702957759519482, guid: d80039318d3226441aaada53041bc777, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.79
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d80039318d3226441aaada53041bc777, type: 2}
   m_IsPrefabParent: 0
@@ -952,6 +968,11 @@ Prefab:
         type: 2}
       propertyPath: lerpSpeed
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799532546431124, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c22e75f0ebed4a24f92c76e11b461062, type: 2}

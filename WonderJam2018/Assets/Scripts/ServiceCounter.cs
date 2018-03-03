@@ -8,7 +8,7 @@ public enum CounterSide
     Right
 };
 
-public class ServiceCounter : MonoBehaviour {
+public class ServiceCounter : Interactable {
 
     public CounterSide side;
     
@@ -17,13 +17,14 @@ public class ServiceCounter : MonoBehaviour {
     [HideInInspector] public GameObject potion;  //TODO: pt changer le type
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+        base.Start();
         clientsEnFile = new Queue<GameObject>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	public override void Update () {
+        base.Update();
 	}
 
     public void AddClientToQueue(GameObject newClient)
