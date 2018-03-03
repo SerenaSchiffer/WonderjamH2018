@@ -10,7 +10,7 @@ public class Box : Interactable {
 	// Use this for initialization
 	public override void Start () {
         base.Start();
-        myItem = null;
+        //myItem = null;
         itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
 	}
 	

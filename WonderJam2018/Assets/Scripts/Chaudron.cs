@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chaudron : Interactable {
     /* "State Machine" */
@@ -21,7 +22,11 @@ public class Chaudron : Interactable {
     private float originalBurnTime;
     private float originalCookTime;
 
+    public GameObject UIChaudron;
+
     private Animator myAnimator;
+
+    public const int maxIngredient = 3;
 
     private void Start()
     {
@@ -80,9 +85,15 @@ public class Chaudron : Interactable {
     {
         if (state == ChaudronStates.Preparation)
         {
-            myMelange.AddIngredient(i);
-            //TODO : Add Ingredient Icon
-        }
+            if(myMelange.mesIngredients.Count < maxIngredient)
+            {
+                myMelange.AddIngredient(i);
+                GameObject ingredientImage = (GameObject)Instantiate(Resources.Load("Prefabs/ImageUI"));
+                ingredientImage.transform.SetParent(UIChaudron.transform, false);
+
+                ingredientImage.GetComponent<Image>().sprite = i.ingredientSprite;
+            }
+}
     }
 
     public int NumberOfIngredients()
@@ -111,7 +122,7 @@ public class Chaudron : Interactable {
         burnTime = originalBurnTime;
 
         state = ChaudronStates.Preparation;
-        myAnimator.SetTrigger("Burn");
+        myAnimator.SetTrigger("Burn");        
     }
 
     
@@ -145,6 +156,14 @@ public class Chaudron : Interactable {
         foreach(Ingredient i in myMelange.mesIngredients)
         {
             Debug.Log(i.ingredientName);
+        }
+    }
+
+    private void ClearUI() //TODO add where necessary
+    {
+        for (int i = 0; i < UIChaudron.transform.childCount; i++)
+        {
+            Destroy(UIChaudron.transform.GetChild(i).gameObject);
         }
     }
 }
