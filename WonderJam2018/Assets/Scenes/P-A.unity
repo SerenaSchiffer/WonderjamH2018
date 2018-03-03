@@ -971,6 +971,41 @@ Prefab:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 212294579535350306, guid: f9d46a7106f6f594e965faafc94067ba,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab3d7077d8aef9846937639cffb94b2c, type: 2}
+    - target: {fileID: 4183753193810564, guid: f9d46a7106f6f594e965faafc94067ba, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.807
+      objectReference: {fileID: 0}
+    - target: {fileID: 212202032463671836, guid: f9d46a7106f6f594e965faafc94067ba,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ed4fbcc23fe654e43a2ccd6892af360b,
+        type: 3}
+    - target: {fileID: 212202032463671836, guid: f9d46a7106f6f594e965faafc94067ba,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212202032463671836, guid: f9d46a7106f6f594e965faafc94067ba,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab3d7077d8aef9846937639cffb94b2c, type: 2}
+    - target: {fileID: 212202032463671836, guid: f9d46a7106f6f594e965faafc94067ba,
+        type: 2}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212294579535350306, guid: f9d46a7106f6f594e965faafc94067ba,
+        type: 2}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9d46a7106f6f594e965faafc94067ba, type: 2}
   m_IsPrefabParent: 0
