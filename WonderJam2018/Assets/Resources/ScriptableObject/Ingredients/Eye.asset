@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49b2dc94ce428cf488e0540ca0d5264a, type: 3}
-  m_Name: Ingredient3
+  m_Name: Eye
   m_EditorClassIdentifier: 
-  ingredientName: TriangleVert
-  ingredientSprite: {fileID: 21300000, guid: b0957edec1e24174cb5491ca2db5024e, type: 3}
+  ingredientName: Eye
+  ingredientSprite: {fileID: 21300000, guid: 12ff42d14ae758d41b6017392f7342ca, type: 3}
   baseIngredientValue: 4
-  mainColor: {r: 0.026115587, g: 0.75735295, b: 0, a: 1}
+  mainColor: {r: 0.9632353, g: 0.9466278, b: 0.7224265, a: 1}
