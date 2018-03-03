@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] int player;
     [SerializeField] bool useKeyboard;
+    public Ingredient myItem;
     [SerializeField]
     float speed = 1;
+
+    const bool WillInteract = true;
 
     Vector2 directionToRaycast;
 
@@ -19,26 +22,37 @@ public class PlayerController : MonoBehaviour {
     void SetVelocity(Vector2 basicSpeed)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = basicSpeed * speed;
-        directionToRaycast = basicSpeed.x > basicSpeed.y ? new Vector2(basicSpeed.x, 0) : new Vector2(0, basicSpeed.y);
+        if (basicSpeed.magnitude > Vector2.zero.magnitude)
+        {
+            directionToRaycast = (Mathf.Abs(basicSpeed.x) > Mathf.Abs(basicSpeed.y)) ? new Vector2(basicSpeed.x, 0) : new Vector2(0, basicSpeed.y);
+        }
     }
-
-    void DoRaycast()
+    
+    void DoRaycast(bool toInteractWith)
     {
         ShowRaycast();
-        RaycastHit2D hit = Physics2D.Raycast(transform.position,directionToRaycast,1);
+        int layer_mask = LayerMask.GetMask("Interactable");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position,directionToRaycast,1 , layer_mask);
         
-        if(hit.collider != null)
+        
+        if (hit.collider != null)
         {
             if (hit.collider.gameObject.tag == "Interactable")
             {
-                //Do Something
+                if(!toInteractWith)
+                    hit.collider.gameObject.GetComponent<Interactable>().Highlight();
+
+                if (toInteractWith)
+                    hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
+
             }
         }
     }
 
     void ShowRaycast()
     {
-
+        Debug.Log(directionToRaycast);
+       Debug.DrawRay((Vector2)transform.position, directionToRaycast);
     }
 
 
@@ -53,6 +67,7 @@ public class PlayerController : MonoBehaviour {
         if (newSpeed.magnitude != Vector2.zero.magnitude)
         {
             SetVelocity(newSpeed);
+            DoRaycast(!WillInteract);
         }
         else
         {
@@ -62,7 +77,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButtonDown("Firek"))
         {
             //TODO Pickup/Put/Throw items
-            Debug.Log("Pick");
+            DoRaycast(WillInteract);
         }
     }
     // Update is called once per frame
@@ -95,6 +110,7 @@ public class PlayerController : MonoBehaviour {
                 if (Input.GetButtonDown("Fire"+player))
                 {
                     //TODO Pickup/Put/Throw items
+                    DoRaycast(WillInteract);
                 }
             }
 

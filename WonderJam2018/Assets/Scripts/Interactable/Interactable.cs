@@ -19,7 +19,7 @@ public class Interactable : MonoBehaviour {
 
     }
      
-    public virtual void HighLight()
+    public virtual void Highlight()
     {
 
     }   
