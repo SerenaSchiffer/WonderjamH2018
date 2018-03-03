@@ -14,4 +14,4 @@ MonoBehaviour:
   ingredientName: Seed
   ingredientSprite: {fileID: 21300000, guid: ddbb18e1585731245b62be424d653eb5, type: 3}
   baseIngredientValue: 4
-  mainColor: {r: 0.58823526, g: 0.4152249, b: 0.15570934, a: 1}
+  mainColor: {r: 0.456986, g: 0.58823526, b: 0.15570934, a: 1}
