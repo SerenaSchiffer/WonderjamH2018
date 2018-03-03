@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 212730241565855612}
   - component: {fileID: 95571737044514768}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: Player1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008732242165720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3509918, y: 0.060203433, z: 0}
+  m_LocalPosition: {x: -3.49, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4983110362806832}
@@ -211,6 +211,8 @@ MonoBehaviour:
   useKeyboard: 1
   myItem: {fileID: 11400000, guid: 46aaa6e1f0b57344abf821f4ff83f8f4, type: 2}
   speed: 7
+  travelDuration: 1
+  swappingPosition: 0
 --- !u!212 &212378505168753888
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb2d;
     SpriteRenderer spriteRenderer;
     const bool WillInteract = true;
-    
+    GameObject otherPlayer;
+
     Vector2 directionToRaycast;
 
 	// Use this for initialization
@@ -26,6 +27,12 @@ public class PlayerController : MonoBehaviour {
         myAnim.SetBool("FaceFront", true);
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (go.GetInstanceID() != gameObject.GetInstanceID())
+                otherPlayer = go;
+        }
     }
 	
     void SetVelocity(Vector2 basicSpeed)
@@ -57,7 +64,6 @@ public class PlayerController : MonoBehaviour {
 
     void ShowRaycast()
     {
-        Debug.Log(directionToRaycast);
         Debug.DrawRay((Vector2)transform.position, directionToRaycast);
     }
 
@@ -89,6 +95,12 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         try
         {
+            if (swappingPosition)
+            {
+                HandleSwap();
+                return;
+            }
+
             if (myItem != null)
             {
                 if(myItem as Ingredient != null)
@@ -157,8 +169,6 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-
-
     private void LateUpdate()
     {
         // Send Animator Value
@@ -193,7 +203,44 @@ public class PlayerController : MonoBehaviour {
             myAnim.SetBool("FaceBack", false);
             return;
         }
+    }
 
+    public float travelDuration = 1f;
+    Vector3 originalPos;
+    Vector3 targetPos;
+    float travelTime = 0f;
+    public bool swappingPosition = false;
+    private void HandleSwap()
+    {
+        float currentStep = 0;
+
+        if (travelTime < travelDuration / 4)
+        {
+            currentStep = Mathf.Lerp(0.3f, 1f, travelTime * 2);
+        }
+        else if (travelTime > travelDuration / 4 * 3)
+        {
+            currentStep = Mathf.Lerp(0.3f, 1f, travelDuration - (travelTime / 4 * 3));
+        }
+        else
+        {
+            currentStep = 1f;
+        }
+
+        travelTime += Time.deltaTime * currentStep;
+        
+        transform.position = Vector3.Lerp(originalPos, targetPos, travelTime);
+
+        if (travelTime > travelDuration)
+            swappingPosition = false;
+    }
+
+    public void SwapPositions()
+    {
+        targetPos = otherPlayer.transform.position;
+        originalPos = transform.position;
+        travelTime = 0f;
+        swappingPosition = true;
     }
 
 }
