@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Chaudron : MonoBehaviour {
+    /* "State Machine" */
+    private enum ChaudronStates
+    {
+        Preparation,
+        Cooking,
+        Finished
+    }
+    ChaudronStates state;
 
     public Melange melangeRef;
     Melange myMelange;
@@ -13,30 +21,23 @@ public class Chaudron : MonoBehaviour {
     private float originalBurnTime;
     private float originalCookTime;
 
-    private bool isFinished;
+    private Animator myAnimator;
 
     private void Start()
     {
         myMelange = Instantiate<Melange>(melangeRef);
-        myMelange.GenerateRandomRecipe();
-        GetComponent<SpriteRenderer>().color = myMelange.MelangeColor();
-        DebugAllIngredients();
 
         originalCookTime = cookTime;
         originalBurnTime = burnTime;
-
-        isFinished = false;
-    }
-
-    public void AddIngredient(Ingredient i)
-    {
-        myMelange.AddIngredient(i);
+        
+        state = ChaudronStates.Preparation;
+        myAnimator = GetComponent<Animator>();
     }
 
     public void Update()
     {
-        if (isFinished) return;
-
+        if (state != ChaudronStates.Cooking)
+            return;
         burnTime -= Time.deltaTime;
         cookTime -= Time.deltaTime;
 
@@ -47,21 +48,62 @@ public class Chaudron : MonoBehaviour {
             FinishCooking();
     }
 
+    public void AddIngredient(Ingredient i)
+    {
+        myMelange.AddIngredient(i);
+        //TODO : Add Ingredient Icon
+    }
+
+    public int NumberOfIngredients()
+    {
+        return myMelange.mesIngredients.Count;
+    }
+
+    public void StartCooking()
+    {
+        if (NumberOfIngredients() > 0)
+        {
+            GetComponent<SpriteRenderer>().color = myMelange.MelangeColor();
+            state = ChaudronStates.Cooking;
+            myAnimator.SetTrigger("StartCooking");
+        }
+    }
+
     private void Burn()
     {
         Destroy(myMelange);
         myMelange = Instantiate<Melange>(melangeRef);
-        myMelange.GenerateRandomRecipe();
-        GetComponent<SpriteRenderer>().color = myMelange.MelangeColor();
         cookTime = originalCookTime;
         burnTime = originalBurnTime;
+
+        state = ChaudronStates.Preparation;
+        myAnimator.SetTrigger("Burn");
+    }
+
+    
+
+    public void Mix()
+    {
+        burnTime = originalBurnTime;
+        myAnimator.SetTrigger("Mix");
     }
 
     private void FinishCooking()
     {
-        isFinished = true;
+        state = ChaudronStates.Finished;
+        myAnimator.SetTrigger("FinishCooking");
     }
+    
+    private void EmptyChaudron()
+    {
+        // TODO : Gérer de servir le mélange
 
+        Destroy(myMelange);
+        myMelange = Instantiate<Melange>(melangeRef);
+        cookTime = originalCookTime;
+        burnTime = originalBurnTime;
+        state = ChaudronStates.Preparation;
+    }
 
     private void DebugAllIngredients()
     {
