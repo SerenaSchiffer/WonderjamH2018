@@ -30,7 +30,7 @@ public class Interactable : MonoBehaviour {
         return null;
     }
      
-    public virtual void Highlight()
+    public virtual void Highlight(PickableItem playerItem)
     {
         highlightBuffer = 3;
     }
