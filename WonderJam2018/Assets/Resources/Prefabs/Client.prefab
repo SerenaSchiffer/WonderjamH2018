@@ -127,9 +127,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
-  maxTimer: 150
+  maxTimer: 60
   melangeClient: {fileID: 0}
   myCounter: {fileID: 0}
+  animController:
+  - {fileID: 9100000, guid: db75c1ce246c30a4dad1115be940fa39, type: 2}
+  - {fileID: 9100000, guid: 204ed232cf226324ca0f260b4d016dbd, type: 2}
+  - {fileID: 9100000, guid: 6143686e933bdf54b9d9c176aead299d, type: 2}
 --- !u!212 &212059636527251528
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -26,6 +26,8 @@ public class Client : MonoBehaviour {
     [HideInInspector] public Melange melangeClient;
     [HideInInspector] public ServiceCounter myCounter;
 
+    [SerializeField] RuntimeAnimatorController[] animController;
+
     Rigidbody2D rb;
     InstantiableObjectContainer objectsReferences;
     Animator animator;
@@ -42,6 +44,21 @@ public class Client : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         objectsReferences = GetComponent<InstantiableObjectContainer>();
         animator = GetComponent<Animator>();
+
+        switch (UnityEngine.Random.Range(1, 4))
+        {
+            case 1:
+                animator.runtimeAnimatorController = animController[0];
+                break;
+
+            case 2:
+                animator.runtimeAnimatorController = animController[1];
+                break;
+
+            case 3:
+                animator.runtimeAnimatorController = animController[2];
+                break;
+        }
     }
 	
 	// Update is called once per frame
