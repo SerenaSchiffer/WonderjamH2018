@@ -43,6 +43,36 @@ public class IngredientInstantiator : MonoBehaviour
         StartTimer();
     }
 
+    private void CleanIngredientHandsAndChests()
+    {
+       
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            Start();
+            foreach (GameObject IN in allBoxesOfPlayer)
+            {
+                IN.gameObject.GetComponent<Box>().myItem = null ;
+            }
+            float temp = phaseTime;
+            phaseTime = 1f;
+            
+            SpawnIngredients();
+            SortTheRestOfIngredients();
+            phaseTime = temp;
+
+            GameObject.Find("Player" + GetComponent<AssetIdentity>().GetPlayerIdentity()).gameObject.GetComponent<PlayerController>().myItem = null;
+
+            ForceDropItem();
+            GameObject[] AllIngredient = GameObject.FindGameObjectsWithTag("IngredientsLoose");
+            foreach (GameObject item in AllIngredient)
+            {
+                Destroy(item);
+            }
+        }
+    }
+
+
+
     void SpawnIngredients()
     {
         if (ingredientList == null)
@@ -93,6 +123,8 @@ public class IngredientInstantiator : MonoBehaviour
             GameObject.Find("Timer").GetComponentInChildren<Text>().text = "00:" + timeLeft.ToString("00");
             timeLeft -= Time.deltaTime;
         }
+
+        CleanIngredientHandsAndChests();
     }
 
     public void EndOfPhase()
