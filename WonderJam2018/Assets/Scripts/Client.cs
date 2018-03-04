@@ -179,6 +179,7 @@ public class Client : MonoBehaviour {
         
         hasTerminated = true;
         myCounter.PopClientFromQueue();
+        melangeState = ClientStatePotion.Bad;
         Destroy(melangeClientPopup);
         Invoke("AutoDestroy", 3f);
     }
