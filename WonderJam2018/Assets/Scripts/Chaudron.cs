@@ -40,7 +40,7 @@ public class Chaudron : Interactable {
     public GameObject particulesBurn;
     public GameObject alertBurn;
     public GameObject fallIngredient;
-    bool fbFalling = false;
+    bool fbFalling;
 
     public override void Start()
     {
@@ -53,32 +53,35 @@ public class Chaudron : Interactable {
         state = ChaudronStates.Preparation;
         myAnimator = GetComponent<Animator>();
         audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
+        fbFalling = false;
     }
 
     public override void Update()
     {
         base.Update();
+        if (fbFalling)
+        {
+            if (fallIngredient.transform.localPosition.y < 0.2f)
+            {
+                fallIngredient.SetActive(false);
+                fbFalling = false;
+            }
+        }
+
+        alertBurn.SetActive(burnTime < 4f && burnTime > 0f);
+        particulesBurn.SetActive(burnTime < 4f && burnTime > 0f);
+
         if (state != ChaudronStates.Cooking)
             return;
         burnTime -= Time.deltaTime;
         cookTime -= Time.deltaTime;
         
-        alertBurn.SetActive(burnTime < 4f);
-        particulesBurn.SetActive(burnTime < 4f);
 
         if (burnTime < float.Epsilon)
             Burn();
 
         if (cookTime < float.Epsilon)
-            FinishCooking();
-        if(fbFalling)
-        {
-            if(fallIngredient.transform.localPosition.y < 0.2f)
-            {
-                fallIngredient.SetActive(false);               
-                fbFalling = false;
-            }
-        }
+            FinishCooking();      
     }
 
     override public PickableItem InteractWithPlayer(PickableItem playerItem)
@@ -132,6 +135,8 @@ public class Chaudron : Interactable {
                 fallIngredient.GetComponent<SpriteRenderer>().sprite = i.mySprite;
                 fallIngredient.transform.localPosition = new Vector2(0, 0.8f);
                 fallIngredient.SetActive(true);
+                fallIngredient.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                fbFalling = true;
             }
 }
     }
@@ -177,6 +182,7 @@ public class Chaudron : Interactable {
     private void FinishCooking()
     {
         state = ChaudronStates.Finished;
+        burnTime = originalBurnTime;
         myAnimator.SetTrigger("FinishCooking");
     }
     

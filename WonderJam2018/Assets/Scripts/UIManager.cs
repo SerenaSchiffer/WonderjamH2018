@@ -37,7 +37,8 @@ public class UIManager : MonoBehaviour {
         player2Text = player2Score.GetComponentInChildren<Text>();
         overlay = GameObject.Find("Overlay").GetComponent<Animator>();
     }
-	
+
+    bool playedCountdown;
 	// Update is called once per frame
 	void Update () {
 		if(test)
@@ -57,6 +58,16 @@ public class UIManager : MonoBehaviour {
                 return;
             }
             UpdateTimerImage();
+
+            if (timer / maxTimer > swapValue - 3.5f / maxTimer)
+            {
+                if (!playedCountdown)
+                {
+                    GameObject.Find("Overlay").GetComponent<Animator>().SetTrigger("Countdown");
+                    playedCountdown = true;
+                }
+            }
+
             if (timer / maxTimer > swapValue)
             {
                 swapValue += swapFraction;
@@ -69,6 +80,7 @@ public class UIManager : MonoBehaviour {
                 {
                     go.GetComponent<PlayerController>().SwapPositions();
                 }
+                playedCountdown = false;
                 SwapUI();
             }
 
