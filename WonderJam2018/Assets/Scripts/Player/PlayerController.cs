@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField] int player;
+    public int player;
     [SerializeField] bool useKeyboard;
     public PickableItem myItem;
     [SerializeField]
     float speed = 1;
+
+    public bool IsSwapped;
     SpriteRenderer itemRenderer;
     SpriteRenderer potionContentRenderer;
     Animator myAnim;
