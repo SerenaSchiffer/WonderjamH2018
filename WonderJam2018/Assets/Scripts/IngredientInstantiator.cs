@@ -23,8 +23,13 @@ public class IngredientInstantiator : MonoBehaviour
         ingredientContainer.transform.position = Vector2.zero;
         ingredientContainer.tag = "IngredientsLoose";
         ingredientContainer.gameObject.GetComponent<AssetIdentity>().SetPlayerIdentity(gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity());
-        StartSortingPhase();
+        StartCoroutine(SpawnItems());
+    }
 
+    IEnumerator SpawnItems()
+    {
+        yield return new WaitForSeconds(10f);
+        StartSortingPhase();
     }
 
     // Update is called once per frame
@@ -90,11 +95,14 @@ public class IngredientInstantiator : MonoBehaviour
     {
         // Get all Ingredient
         GameObject[] AllIngredient = GameObject.FindGameObjectsWithTag("IngredientsLoose");
-        GameObject RightSetOfIngredients = AllIngredient[0];
+        GameObject RightSetOfIngredients = null;
         for (int i = 0; i < AllIngredient.Length; i++)
         {
             int ingredientCount = AllIngredient[i].transform.childCount;
-            AllIngredient[i].GetComponent<AssetIdentity>().GetPlayerIdentity();
+            if(gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity() == AllIngredient[i].GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                RightSetOfIngredients = AllIngredient[i];
+            }
 
             //TODO GÉRER LES JOUEURS
         }
@@ -112,21 +120,24 @@ public class IngredientInstantiator : MonoBehaviour
         // put all ingredient
 
         int j = 0;
+        if (RightSetOfIngredients != null)
+        {
             for (int i = 0; i < allBoxesOfPlayer.Length; i++)
             {
-                if(allBoxesOfPlayer[i].GetComponent<Box>().myItem == null)
+                if (allBoxesOfPlayer[i].GetComponent<Box>().myItem == null)
                 {
                     StartCoroutine(PutItemInBox(allBoxesOfPlayer[i].GetComponent<Box>(), RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>()));
-                    RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>().GoToPosition(allBoxesOfPlayer[i].transform.position);    
+                    RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>().GoToPosition(allBoxesOfPlayer[i].transform.position);
                     j++;
                 }
             }
+        }
 
     }
 
     IEnumerator PutItemInBox(Box box, Item item)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.01f);
         box.myItem = item.myItem;
     }
 }

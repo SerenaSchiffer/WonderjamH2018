@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    [SerializeField]
-    Text player1Text;
+    public GameObject player1Score;
+    public GameObject player2Score;
 
-    [SerializeField]
+    Text player1Text;
     Text player2Text;
 
     [SerializeField]
@@ -23,16 +23,19 @@ public class UIManager : MonoBehaviour {
     float timer = 0;
     public float swapFraction = 0.25f;
     float swapValue;
-
+    Animator overlay;
 
 	// Use this for initialization
 	void Start () {
-        basePosition1 = player1Text.transform.position;
-        basePosition2 = player2Text.transform.position;
+        basePosition1 = player1Score.transform.position;
+        basePosition2 = player2Score.transform.position;
         goal1 = basePosition1;
         goal2 = basePosition2;
         clockImage.transform.rotation = new Quaternion(0, 0, 0, 0);
         swapValue = swapFraction;
+        player1Text = player1Score.GetComponentInChildren<Text>();
+        player2Text = player2Score.GetComponentInChildren<Text>();
+        overlay = GameObject.Find("Overlay").GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -63,15 +66,16 @@ public class UIManager : MonoBehaviour {
         goal1 = basePosition2;
         goal2 = basePosition1;
         basePosition1 = goal1;
-        basePosition2 = goal2;        
+        basePosition2 = goal2;
+        overlay.SetTrigger("SWAP");
     }
 
     void LookPosition()
     {
         float newX1 = Mathf.Lerp(player1Text.transform.position.x, goal1.x, lerpSpeed /* * Time.deltaTime*/);
-        player1Text.transform.position = new Vector2(newX1, player1Text.transform.position.y);
+        player1Score.transform.position = new Vector2(newX1, player1Text.transform.position.y);
         float newX2 = Mathf.Lerp(player2Text.transform.position.x, goal2.x, lerpSpeed /* * Time.deltaTime*/);
-        player2Text.transform.position = new Vector2(newX2, player2Text.transform.position.y);
+        player2Score.transform.position = new Vector2(newX2, player2Text.transform.position.y);
     }
 
     public void UpdateScore(int player, float score)

@@ -46,3 +46,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 1341936455
+    locked: 0
+  - name: Pickable
+    uniqueID: 2576084865
+    locked: 0
+  - name: Character
+    uniqueID: 24285253
+    locked: 0
+  - name: Items
+    uniqueID: 4153587555
+    locked: 0
+  - name: HigherItem
+    uniqueID: 4043603309
+    locked: 0
+  - name: HighestItem
+    uniqueID: 2951818739
+    locked: 0
