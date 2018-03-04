@@ -5,15 +5,27 @@ using UnityEngine;
 public class Item : Interactable {
 
     public Ingredient myItem;
+
+    public float fadeInTime = 0f;
+
 	// Use this for initialization
 	void Start () {
         base.Start();
-	}
-	
+        mySprite = GetComponent<SpriteRenderer>();
+
+    }
+
+    SpriteRenderer mySprite;
 	// Update is called once per frame
 	void Update () {
         base.Update();
-        if(swappingPosition)
+
+        if (fadeInTime < 1f)
+        {
+            mySprite.color = new Color(mySprite.color.r, mySprite.color.g, mySprite.color.b, fadeInTime);
+            fadeInTime += Time.deltaTime;
+        }
+        if (swappingPosition)
             HandleTranslate();
     }
 
