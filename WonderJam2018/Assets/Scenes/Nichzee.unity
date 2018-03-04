@@ -4396,7 +4396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac506abb9926d3e4b98e963f4ed872d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  side: 1
+  side: 0
   potion: {fileID: 0}
 --- !u!212 &556838507
 SpriteRenderer:
@@ -11877,7 +11877,7 @@ Prefab:
     - target: {fileID: 114110032765325794, guid: 2622905a25e2efe4ebe7db51f7527e6e,
         type: 2}
       propertyPath: useKeyboard
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2622905a25e2efe4ebe7db51f7527e6e, type: 2}
@@ -14934,6 +14934,11 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: maxTimer
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c22e75f0ebed4a24f92c76e11b461062, type: 2}
   m_IsPrefabParent: 0
@@ -17948,7 +17953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac506abb9926d3e4b98e963f4ed872d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  side: 0
+  side: 1
   potion: {fileID: 0}
 --- !u!212 &2093394787
 SpriteRenderer:
@@ -18730,6 +18735,51 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: faf2bf657a329234a8fd9a14a22bad85, type: 2}
+    - target: {fileID: 114678730330399818, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114051323253126410, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114074782203915610, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114960819636305708, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114194158328239608, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114860059185336570, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114585644182234206, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114563452041053152, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114904274256088286, guid: d80039318d3226441aaada53041bc777,
+        type: 2}
+      propertyPath: audio_Swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d80039318d3226441aaada53041bc777, type: 2}
   m_IsPrefabParent: 0
