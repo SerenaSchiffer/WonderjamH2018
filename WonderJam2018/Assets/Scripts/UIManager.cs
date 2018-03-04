@@ -60,6 +60,12 @@ public class UIManager : MonoBehaviour {
             if (timer / maxTimer > swapValue)
             {
                 swapValue += swapFraction;
+
+                foreach(IngredientInstantiator i in FindObjectsOfType<IngredientInstantiator>())
+                {
+                    i.ForceDropItem();
+                }
+
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                 {
                     go.GetComponent<PlayerController>().SwapPositions();

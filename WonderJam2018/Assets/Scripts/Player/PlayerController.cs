@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField] int player;
+    public int player;
     [SerializeField] bool useKeyboard;
     public PickableItem myItem;
     [SerializeField]
     float speed = 1;
+
+    public bool IsSwapped;
     SpriteRenderer itemRenderer;
     SpriteRenderer potionContentRenderer;
     Animator myAnim;
@@ -99,12 +101,6 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         try
         {
-            if (swappingPosition)
-            {
-                HandleSwap();
-                return;
-            }
-
             if (myItem != null)
             {
                 if(myItem as Ingredient != null)
@@ -128,6 +124,11 @@ public class PlayerController : MonoBehaviour {
                 potionContentRenderer.transform.parent.gameObject.SetActive(false);
             }
 
+            if (swappingPosition)
+            {
+                HandleSwap();
+                return;
+            }
             DoRaycast(!WillInteract);
             if (player != 1 && player != 2)
                 throw new PlayerIdException("L'ID du player n'est pas setté dans le script PlayerController");
@@ -244,6 +245,7 @@ public class PlayerController : MonoBehaviour {
         targetPos = otherPlayer.transform.position;
         originalPos = transform.position;
         travelTime = 0f;
+        IsSwapped = !IsSwapped;
         swappingPosition = true;
     }
 

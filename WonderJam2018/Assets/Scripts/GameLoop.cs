@@ -14,10 +14,15 @@ public class GameLoop : MonoBehaviour {
     public static States currentState;
     public GameObject rideau;
 
+    [SerializeField] AudioClip DuringDay;
+    [SerializeField] AudioClip AfterDay;
+
+
 
     private Vector3 rideauTarget;
     private Vector3 rideauPosition;
     private float rideauTemps;
+    private AudioSource thisAudioSource;
 
 
     public void Awake()
@@ -26,10 +31,15 @@ public class GameLoop : MonoBehaviour {
         rideauTarget = Vector3.zero;
         rideauPosition = rideau.transform.position;
         rideauTemps = 0f;
+        thisAudioSource = gameObject.GetComponent<AudioSource>();
+        thisAudioSource.clip = DuringDay;
+        thisAudioSource.loop = true;
+        thisAudioSource.Play();
     }
 
     public void StartVentes()
     {
+        
         // Monter le Rideau
         rideauTarget = rideau.transform.position + Vector3.up * 5f;
 
@@ -41,6 +51,9 @@ public class GameLoop : MonoBehaviour {
 
     public void FermerPortes()
     {
+        thisAudioSource.clip = AfterDay;
+        thisAudioSource.loop = true;
+        thisAudioSource.Play();
         //Faire le panel de fermeture
         GameObject.Find("ClosedSign").GetComponent<Animator>().SetTrigger("CloseSign");
 

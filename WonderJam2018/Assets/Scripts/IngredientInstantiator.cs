@@ -101,6 +101,7 @@ public class IngredientInstantiator : MonoBehaviour
             //TODO GÉRER LES JOUEURS
         }
 
+
         // Get all Boxes
         //GameObject[] AllBoxesOfPlayer = GameObject.FindGameObjectsWithTag("Box");
         //GameObject RightSetOfBox = AllIngredient[0];
@@ -112,6 +113,120 @@ public class IngredientInstantiator : MonoBehaviour
         // }
 
         // put all ingredient
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject actualPlayer = null;
+
+        if (players[0].GetComponent<PlayerController>().IsSwapped)
+        {
+            if (players[0].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[1];
+            }
+
+            if (players[1].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[0];
+            }
+        }
+        else
+        {
+            if (players[0].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[0];
+            }
+
+            if (players[1].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[1];
+            }
+        }
+
+
+
+        if (actualPlayer != null)
+        {
+            if (allBoxesOfPlayer.Length != RightSetOfIngredients.transform.childCount && actualPlayer.GetComponent<PlayerController>().myItem != null)
+            {
+                GameObject newInstance = Instantiate(ingredientGameobject, ingredientContainer.transform, true);
+                newInstance.transform.position = actualPlayer.transform.position;
+                newInstance.GetComponent<SpriteRenderer>().sprite = actualPlayer.GetComponent<PlayerController>().myItem.mySprite;
+                newInstance.GetComponent<Item>().SetItem((Ingredient)actualPlayer.GetComponent<PlayerController>().myItem);
+                actualPlayer.GetComponent<PlayerController>().myItem = null;
+            }
+        }
+
+            int j = 0;
+        if (RightSetOfIngredients != null)
+        {
+            for (int i = 0; i < allBoxesOfPlayer.Length; i++)
+            {
+                if (allBoxesOfPlayer[i].GetComponent<Box>().myItem == null)
+                {
+                    StartCoroutine(PutItemInBox(allBoxesOfPlayer[i].GetComponent<Box>(), RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>()));
+                    RightSetOfIngredients.transform.GetChild(j).GetComponent<Item>().GoToPosition(allBoxesOfPlayer[i].transform.position);
+                    j++;
+                }
+            }
+        }
+    }
+
+    public void ForceDropItem()
+    {
+        // Get all Ingredient
+        GameObject[] AllIngredient = GameObject.FindGameObjectsWithTag("IngredientsLoose");
+        GameObject RightSetOfIngredients = null;
+        for (int i = 0; i < AllIngredient.Length; i++)
+        {
+            int ingredientCount = AllIngredient[i].transform.childCount;
+            if (gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity() == AllIngredient[i].GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                RightSetOfIngredients = AllIngredient[i];
+            }
+
+            //TODO GÉRER LES JOUEURS
+        }
+
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject actualPlayer = null;
+
+        if (players[0].GetComponent<PlayerController>().IsSwapped)
+        {
+            if (players[0].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[1];
+            }
+
+            if (players[1].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[0];
+            }
+        }
+        else
+        {
+            if (players[0].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[0];
+            }
+
+            if (players[1].GetComponent<PlayerController>().player == gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity())
+            {
+                actualPlayer = players[1];
+            }
+        }
+
+
+        if (actualPlayer != null)
+        {
+            if (allBoxesOfPlayer.Length != RightSetOfIngredients.transform.childCount && actualPlayer.GetComponent<PlayerController>().myItem != null)
+            {
+                GameObject newInstance = Instantiate(ingredientGameobject, ingredientContainer.transform, true);
+                newInstance.transform.position = actualPlayer.transform.position;
+                newInstance.GetComponent<SpriteRenderer>().sprite = actualPlayer.GetComponent<PlayerController>().myItem.mySprite;
+                newInstance.GetComponent<Item>().SetItem((Ingredient)actualPlayer.GetComponent<PlayerController>().myItem);
+                actualPlayer.GetComponent<PlayerController>().myItem = null;
+            }
+        }
 
         int j = 0;
         if (RightSetOfIngredients != null)
