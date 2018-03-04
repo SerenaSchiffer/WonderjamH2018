@@ -67,6 +67,7 @@ public class IngredientInstantiator : MonoBehaviour
             newInstance.transform.position = gameObject.transform.GetChild(0).transform.position;
             newInstance.GetComponent<SpriteRenderer>().sprite = ingredientList[nextRandom].mySprite;
             newInstance.GetComponent<Item>().SetItem(ingredientList[nextRandom]);
+            newInstance.gameObject.AddComponent<AudioSource>();
             ingredientList.RemoveAt(nextRandom);
         }
     }
