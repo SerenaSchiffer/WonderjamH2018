@@ -179,7 +179,7 @@ public class Client : MonoBehaviour {
 
             AddIngredientToPopup(melangeClientPopup);
 
-            Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);
+            Vector2 spawnPosition = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f);
             melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(spawnPosition);
         }
     }
@@ -190,7 +190,6 @@ public class Client : MonoBehaviour {
         {
             GameObject ingredientImage = Instantiate(objectsReferences.ImageIngredientUI);
             ingredientImage.transform.SetParent(melangeClientPopup.transform, false);
-
             ingredientImage.GetComponent<Image>().sprite = ingredient.mySprite;
         }
     }

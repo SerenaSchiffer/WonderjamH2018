@@ -74,8 +74,6 @@ public class ServiceCounter : Interactable {
     {
         if(playerItem as Melange != null && potion != null)
         {
-            if (potion == null)
-                return playerItem;
             isGoodMelange = VerifiIfGoodPotion((Melange)playerItem);
             if(isGoodMelange)
             {
@@ -141,7 +139,9 @@ public class ServiceCounter : Interactable {
         if(potionState != ClientStatePotion.Waiting)
         {
             potion = null;
-            return potionState;
+            ClientStatePotion temp = potionState;
+            potionState = ClientStatePotion.Waiting;
+            return temp;
         }
         else
         {

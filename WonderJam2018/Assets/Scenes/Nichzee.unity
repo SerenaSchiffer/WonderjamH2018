@@ -500,6 +500,7 @@ GameObject:
   - component: {fileID: 67703020}
   - component: {fileID: 67703019}
   - component: {fileID: 67703018}
+  - component: {fileID: 67703021}
   m_Layer: 8
   m_Name: ServiceCounter (4)
   m_TagString: ClientTarget
@@ -534,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac506abb9926d3e4b98e963f4ed872d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  side: 0
+  side: 1
   potion: {fileID: 0}
 --- !u!212 &67703019
 SpriteRenderer:
@@ -607,6 +608,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &67703021
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67703016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e541549f694d1e498070341744d456b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &76948627 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1604305824145854, guid: d80039318d3226441aaada53041bc777,
@@ -3020,6 +3038,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4115296857141352, guid: 2622905a25e2efe4ebe7db51f7527e6e,
     type: 2}
   m_PrefabInternal: {fileID: 1387172727}
+--- !u!1 &412861474 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1980211925008918, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1196553871}
 --- !u!1 &413584598 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1608648251358504, guid: d80039318d3226441aaada53041bc777,
@@ -3300,7 +3323,7 @@ Prefab:
     - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
         type: 2}
       propertyPath: phaseTime
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
         type: 2}
@@ -4520,6 +4543,7 @@ GameObject:
   - component: {fileID: 556838508}
   - component: {fileID: 556838507}
   - component: {fileID: 556838506}
+  - component: {fileID: 556838509}
   m_Layer: 8
   m_Name: ServiceCounter (6)
   m_TagString: ClientTarget
@@ -4627,6 +4651,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &556838509
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556838504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e541549f694d1e498070341744d456b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &561522302
 GameObject:
   m_ObjectHideFlags: 0
@@ -8609,7 +8650,7 @@ Prefab:
     - target: {fileID: 224642576824435998, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
@@ -10776,6 +10817,10 @@ Prefab:
       propertyPath: ContainerClients
       value: 
       objectReference: {fileID: 2033141760}
+    - target: {fileID: 1980211925008918, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
   m_IsPrefabParent: 0
@@ -12405,6 +12450,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1415118865 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1980211925008918, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1480063730}
 --- !u!1 &1446883185
 GameObject:
   m_ObjectHideFlags: 0
@@ -12722,6 +12772,10 @@ Prefab:
     - target: {fileID: 1980211925008918, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
       propertyPath: m_Name
       value: ClientSpawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980211925008918, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
@@ -13448,6 +13502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rideau: {fileID: 1897346323}
+  clientSpawner1: {fileID: 412861474}
+  clientSpawner2: {fileID: 1415118865}
 --- !u!114 &1559500097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16121,6 +16177,7 @@ GameObject:
   - component: {fileID: 1806566559}
   - component: {fileID: 1806566558}
   - component: {fileID: 1806566557}
+  - component: {fileID: 1806566560}
   m_Layer: 8
   m_Name: ServiceCounter (3)
   m_TagString: ClientTarget
@@ -16228,6 +16285,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1806566560
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1806566555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e541549f694d1e498070341744d456b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1807711597 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4329728906586958, guid: d80039318d3226441aaada53041bc777,
@@ -16817,7 +16891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1897346324
 Transform:
   m_ObjectHideFlags: 0
@@ -17460,7 +17534,7 @@ Prefab:
     - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
         type: 2}
       propertyPath: phaseTime
-      value: 10000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
         type: 2}
@@ -18047,6 +18121,7 @@ GameObject:
   - component: {fileID: 2093394788}
   - component: {fileID: 2093394787}
   - component: {fileID: 2093394786}
+  - component: {fileID: 2093394789}
   m_Layer: 8
   m_Name: ServiceCounter (5)
   m_TagString: ClientTarget
@@ -18154,6 +18229,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2093394789
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093394784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e541549f694d1e498070341744d456b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2098012430
 GameObject:
   m_ObjectHideFlags: 0

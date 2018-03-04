@@ -18,6 +18,7 @@ public class GameLoop : MonoBehaviour {
     private Vector3 rideauTarget;
     private Vector3 rideauPosition;
     private float rideauTemps;
+    public GameObject clientSpawner1, clientSpawner2;
 
 
     public void Awake()
@@ -32,9 +33,13 @@ public class GameLoop : MonoBehaviour {
     {
         // Monter le Rideau
         rideauTarget = rideau.transform.position + Vector3.up * 5f;
+        rideau.GetComponent<BoxCollider2D>().enabled = false;
 
         // Activer l'horloge et le swap
         GameObject.Find("Canvas").GetComponent<UIManager>();
+
+        clientSpawner1.SetActive(true);
+        clientSpawner2.SetActive(true);
 
         currentState = States.Journee;
     }
