@@ -33,7 +33,6 @@ public class ReadyScript : MonoBehaviour {
 
         if (player1Ready && player2Ready)
         {
-            Debug.Log("ma mere");
             SceneManager.LoadScene("Nichzee");
         }
 	}

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 8a0848ddc00cf4a4d865ef1fab20c0f9
+  - enabled: 1
+    path: Assets/Scenes/CharacterReady.unity
+    guid: 68226d29dcfa0cb42bfa8c0ab9c3c670
+  - enabled: 1
     path: Assets/Scenes/Nichzee.unity
     guid: 6a1e739c819cf5044a42f06fdcdfa5d5
   - enabled: 1
