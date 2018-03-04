@@ -53,15 +53,7 @@ public class Item : Interactable {
 
 
         }
-
-        if(playerItem as Ingredient != null)
-        {
-            Ingredient tempVar = myItem;
-            myItem = (Ingredient)playerItem;
-            ResetSprite(myItem);
-            return tempVar;
-            
-        }else
+        else
         {
             return myItem;
         }
