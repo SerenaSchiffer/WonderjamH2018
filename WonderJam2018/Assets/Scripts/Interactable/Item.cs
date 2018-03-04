@@ -15,6 +15,7 @@ public class Item : Interactable {
 	void Start () {
         base.Start();
         mySprite = GetComponent<SpriteRenderer>();
+        mySprite.color = new Color(mySprite.color.r, mySprite.color.g, mySprite.color.b, 0f);
         audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
     }
 

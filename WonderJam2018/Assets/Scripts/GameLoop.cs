@@ -8,7 +8,8 @@ public class GameLoop : MonoBehaviour {
     {
         Rangement,
         Journee,
-        Closed
+        Closed,
+        EndDay
     }
     [SerializeField] AudioClip DuringDay;
     [SerializeField] AudioClip AfterDay;
@@ -22,6 +23,7 @@ public class GameLoop : MonoBehaviour {
     private Vector3 rideauPosition;
     private float rideauTemps;
     public GameObject clientSpawner1, clientSpawner2;
+    public ServiceCounter[] serviceCounters;
 
 
     public void Awake()
@@ -32,11 +34,12 @@ public class GameLoop : MonoBehaviour {
         rideauTemps = 0f;
     }
 
-    private void Start()
+    public void Start()
     {
         audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
         audioMixer.PlayMusic(DuringDay);
     }
+
 
     public void StartVentes()
     {
@@ -60,6 +63,9 @@ public class GameLoop : MonoBehaviour {
         //Faire le panel de fermeture
         GameObject.Find("ClosedSign").GetComponent<Animator>().SetTrigger("CloseSign");
 
+        clientSpawner1.SetActive(false);
+        clientSpawner2.SetActive(false);
+
         currentState = States.Closed;
     }
 
@@ -71,6 +77,28 @@ public class GameLoop : MonoBehaviour {
             rideauTemps += Time.deltaTime;
             if (rideauTemps > 3f)
                 rideauTarget = Vector3.zero;
+        }
+
+        if (currentState == States.Closed)
+        {
+            for(int i = 0; i < serviceCounters.Length; i++)
+            {
+                Debug.Log(i + "     " + serviceCounters[i].GetQueueCount())
+                if(serviceCounters[i].GetQueueCount() > 0)
+                {
+                    return;
+                }
+            }
+            currentState = States.EndDay;
+            Debug.Log("caliss");
+            if(Score.scoreP1 > Score.scoreP2)
+            {
+                //TODO load p1 win
+            }
+            else
+            {
+                //TODO load p2 win
+            }
         }
     }
 	
