@@ -30,6 +30,8 @@ public class Chaudron : Interactable {
 
     public GameObject particulesBurn;
     public GameObject alertBurn;
+    public GameObject fallIngredient;
+    bool fbFalling = false;
 
     public override void Start()
     {
@@ -59,6 +61,14 @@ public class Chaudron : Interactable {
 
         if (cookTime < float.Epsilon)
             FinishCooking();
+        if(fbFalling)
+        {
+            if(fallIngredient.transform.localPosition.y < 0.2f)
+            {
+                fallIngredient.SetActive(false);               
+                fbFalling = false;
+            }
+        }
     }
 
     override public PickableItem InteractWithPlayer(PickableItem playerItem)
@@ -104,6 +114,10 @@ public class Chaudron : Interactable {
                 ingredientImage.transform.SetParent(UIChaudron.transform, false);
 
                 ingredientImage.GetComponent<Image>().sprite = i.mySprite;
+
+                fallIngredient.GetComponent<SpriteRenderer>().sprite = i.mySprite;
+                fallIngredient.transform.localPosition = new Vector2(0, 0.8f);
+                fallIngredient.SetActive(true);
             }
 }
     }
