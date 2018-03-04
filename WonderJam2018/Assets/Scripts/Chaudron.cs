@@ -162,7 +162,16 @@ public class Chaudron : Interactable {
         burnTime = originalBurnTime;
         state = ChaudronStates.Preparation;
         myAnimator.SetTrigger("Empty");
+        EmptyUI();
         return temp;
+    }
+
+    void EmptyUI()
+    {
+        for(int i = 0; i < UIChaudron.transform.childCount; i++)
+        {
+            Destroy(UIChaudron.transform.GetChild(i).gameObject);
+        }
     }
 
     private void DebugAllIngredients()

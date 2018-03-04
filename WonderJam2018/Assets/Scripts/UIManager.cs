@@ -82,19 +82,23 @@ public class UIManager : MonoBehaviour {
     void LookPosition()
     {
         float newX1 = Mathf.Lerp(player1Score.transform.localPosition.x, goal1.x, lerpSpeed  * Time.deltaTime);
-        player1Score.transform.localPosition = new Vector2(newX1, 0);
+        player1Score.transform.localPosition = new Vector2(newX1, player1Score.transform.localPosition.y);
         float newX2 = Mathf.Lerp(player2Score.transform.localPosition.x, goal2.x, lerpSpeed  * Time.deltaTime);
-        player2Score.transform.localPosition = new Vector2(newX2, 0);
+        player2Score.transform.localPosition = new Vector2(newX2, player2Score.transform.localPosition.y);
     }
 
     public void UpdateScore(int player, float score)
     {
         //TODO BetterScore
         if (player == 1)
-            player1Text.text = score.ToString();
+        {
+            Score.scoreP1 += score;
+            player1Text.text = Score.scoreP1.ToString();
+        }
         else if(player == 2)
         {
-            player2Text.text = score.ToString();
+            Score.scoreP2 += score;
+            player1Text.text = Score.scoreP2.ToString();
         }
         
     }

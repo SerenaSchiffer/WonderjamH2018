@@ -8,7 +8,8 @@ public enum ClientStatePotion
 {
     Good,
     Bad,
-    Waiting
+    Waiting,
+    Finished,
 }
 
 public enum StateClient
@@ -96,6 +97,7 @@ public class Client : MonoBehaviour {
                 animator.SetBool("Annoyed", false);
                 animator.SetBool("Idle", false);
             }
+            melangeState = ClientStatePotion.Finished;
             ExitShop();
 
         }
@@ -132,6 +134,7 @@ public class Client : MonoBehaviour {
         else
             rb.velocity = new Vector2(1f, 0f);
 
+        myCounter.PopClientFromQueue();
         Destroy(melangeClientPopup);
         Invoke("AutoDestroy", 3f);
     }
@@ -139,7 +142,7 @@ public class Client : MonoBehaviour {
     private bool IsInFrontOfSomething()
     {
         int layerMask = LayerMask.GetMask(new String[] { "Interactable", "ObjectToStopClient" });
-        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -1f), 0.2f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -1f), 0.9f, layerMask);
         Debug.DrawRay(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -0.2f));
 
         //GameObject other = hit.collider.gameObject;
@@ -179,7 +182,7 @@ public class Client : MonoBehaviour {
 
             AddIngredientToPopup(melangeClientPopup);
 
-            Vector2 spawnPosition = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f);
+            Vector2 spawnPosition = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.56f);
             melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(spawnPosition);
         }
     }
@@ -191,6 +194,8 @@ public class Client : MonoBehaviour {
             GameObject ingredientImage = Instantiate(objectsReferences.ImageIngredientUI);
             ingredientImage.transform.SetParent(melangeClientPopup.transform, false);
             ingredientImage.GetComponent<Image>().sprite = ingredient.mySprite;
+            //ingredientImage.transform.SetAsFirstSibling();
+            ingredientImage.transform.SetAsLastSibling();
         }
     }
 
