@@ -15006,7 +15006,12 @@ Prefab:
     - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
       propertyPath: maxTimer
-      value: 40
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224004696702319838, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c22e75f0ebed4a24f92c76e11b461062, type: 2}

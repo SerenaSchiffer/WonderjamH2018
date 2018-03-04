@@ -50,6 +50,7 @@ public class Client : MonoBehaviour {
     [SerializeField] AudioClip audio_Mix;
 
     private AudioManager audioMixer;
+    bool hasTerminated = false;
 
 
     // Use this for initialization
@@ -172,7 +173,7 @@ public class Client : MonoBehaviour {
             rb.velocity = new Vector2(-1f, 0f);
         else
             rb.velocity = new Vector2(1f, 0f);
-
+        hasTerminated = true;
         myCounter.PopClientFromQueue();
         Destroy(melangeClientPopup);
         Invoke("AutoDestroy", 3f);
@@ -180,32 +181,37 @@ public class Client : MonoBehaviour {
 
     private bool IsInFrontOfSomething()
     {
-        int layerMask = LayerMask.GetMask(new String[] { "Interactable", "ObjectToStopClient" });
-        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -1f), 0.9f, layerMask);
-        Debug.DrawRay(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -0.2f));
-
-        //GameObject other = hit.collider.gameObject;
-        if (hit.collider != null)
+        if (!hasTerminated)
         {
-            rb.velocity = Vector2.zero;
-            GenerateRecipe();
-            
+            int layerMask = LayerMask.GetMask(new String[] { "Interactable", "ObjectToStopClient" });
+            RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -1f), 0.9f, layerMask);
+            Debug.DrawRay(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -0.2f));
 
-            if (hit.collider.gameObject.layer == 8)
+            //GameObject other = hit.collider.gameObject;
+            if (hit.collider != null)
             {
-                myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
-                melangeState = myCounter.InteractWithClient(melangeClient,clientState);
-            }
-            else if (hit.collider.gameObject.layer == 10)
-                myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
+                rb.velocity = Vector2.zero;
+                GenerateRecipe();
 
-            if (!myCounter.DoesQueueContain(gameObject))
+
+                if (hit.collider.gameObject.layer == 8)
+                {
+                    myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
+                    melangeState = myCounter.InteractWithClient(melangeClient, clientState);
+                }
+                else if (hit.collider.gameObject.layer == 10)
+                    myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
+
+                if (!myCounter.DoesQueueContain(gameObject))
                 myCounter.AddClientToQueue(gameObject);
 
-            return true;
-        }
+                return true;
+            }
 
-        return false;
+            return false;
+        }
+        else
+            return false;
     }
 
     private void GenerateRecipe()
