@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour {
     public void PlayMusic(AudioClip aclip)
     {
         music.Stop();
-        music.volume = 0.1f;
+        music.volume = 0.3f;
         music.clip = aclip;
         music.loop = true;
         music.Play();
