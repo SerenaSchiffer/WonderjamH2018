@@ -27,8 +27,8 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        basePosition1 = player1Score.transform.position;
-        basePosition2 = player2Score.transform.position;
+        basePosition1 = player1Score.transform.localPosition;
+        basePosition2 = player2Score.transform.localPosition;
         goal1 = basePosition1;
         goal2 = basePosition2;
         clockImage.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -81,10 +81,10 @@ public class UIManager : MonoBehaviour {
 
     void LookPosition()
     {
-        float newX1 = Mathf.Lerp(player1Text.transform.position.x, goal1.x, lerpSpeed /* * Time.deltaTime*/);
-        player1Score.transform.position = new Vector2(newX1, player1Text.transform.position.y);
-        float newX2 = Mathf.Lerp(player2Text.transform.position.x, goal2.x, lerpSpeed /* * Time.deltaTime*/);
-        player2Score.transform.position = new Vector2(newX2, player2Text.transform.position.y);
+        float newX1 = Mathf.Lerp(player1Score.transform.localPosition.x, goal1.x, lerpSpeed  * Time.deltaTime);
+        player1Score.transform.localPosition = new Vector2(newX1, 0);
+        float newX2 = Mathf.Lerp(player2Score.transform.localPosition.x, goal2.x, lerpSpeed  * Time.deltaTime);
+        player2Score.transform.localPosition = new Vector2(newX2, 0);
     }
 
     public void UpdateScore(int player, float score)
