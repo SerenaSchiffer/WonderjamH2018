@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Trashcan : Interactable {
 
+    Animator myanimator;
+
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
         base.Start();
+        myanimator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void Update () {
         base.Update();
 		
 	}
@@ -19,6 +22,7 @@ public class Trashcan : Interactable {
     {
         if(playerItem as Melange != null)
         {
+            myanimator.SetTrigger("Trashing");
             return null;
         }
         else

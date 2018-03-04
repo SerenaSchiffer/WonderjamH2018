@@ -4,6 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ClientStatePotion
+{
+    Good,
+    Bad,
+    Waiting
+}
+
+public enum StateClient
+{
+    Joy,
+    Annoyed,
+    Angry,
+}
+
 public class Client : MonoBehaviour {
 
     public Melange melangeRef;
@@ -17,7 +31,9 @@ public class Client : MonoBehaviour {
     Animator animator;
     float timer;
     bool hasArrived;
-    bool isContent = false;
+    ClientStatePotion melangeState = ClientStatePotion.Waiting;
+    StateClient clientState = StateClient.Joy;
+    GameObject melangeClientPopup;
 
     // Use this for initialization
     void Start () {
@@ -34,23 +50,27 @@ public class Client : MonoBehaviour {
         if (timer >= (maxTimer / 3) * 2)
         {
             animator.SetBool("Idle", true);
+            clientState = StateClient.Joy;
+
         }
         else if (timer >= (maxTimer / 3) && timer < (maxTimer / 3) * 2)
         {
             animator.SetBool("Annoyed", true);
             animator.SetBool("Idle", false);
+            clientState = StateClient.Annoyed;
         }
         else if (timer >= 0 && timer < (maxTimer / 3))
         {
             animator.SetBool("Angry", true);
             animator.SetBool("Annoyed", false);
+            clientState = StateClient.Angry;
         }
         else
         {
             ExitShop();
         }
 
-        if(isContent)
+        if(melangeState == ClientStatePotion.Good)
         {
             //TODO donner plus d'argent si content
             if(!animator.GetBool("Angry"))
@@ -62,11 +82,22 @@ public class Client : MonoBehaviour {
             ExitShop();
 
         }
+        else if(melangeState == ClientStatePotion.Bad)
+        {
+            if (!animator.GetBool("Angry"))
+            {
+                animator.SetBool("Angry", true);
+                animator.SetBool("Joy", false);
+                animator.SetBool("Annoyed", false);
+                animator.SetBool("Idle", false);
+            }
+            ExitShop();
+        }
 
         if (hasArrived)
             timer -= Time.deltaTime;
 
-        if(!isContent)
+        if(melangeState == ClientStatePotion.Waiting)
         {
             if (!IsInFrontOfSomething())
             {
@@ -84,6 +115,7 @@ public class Client : MonoBehaviour {
         else
             rb.velocity = new Vector2(1f, 0f);
 
+        Destroy(melangeClientPopup);
         Invoke("AutoDestroy", 3f);
     }
 
@@ -103,7 +135,7 @@ public class Client : MonoBehaviour {
             if (hit.collider.gameObject.layer == 8)
             {
                 myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
-                isContent = myCounter.InteractWithClient(melangeClient);
+                melangeState = myCounter.InteractWithClient(melangeClient,clientState);
             }
             else if (hit.collider.gameObject.layer == 10)
                 myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
@@ -125,7 +157,7 @@ public class Client : MonoBehaviour {
             melangeClient.GenerateRandomRecipe();
 
 
-            GameObject melangeClientPopup = Instantiate(objectsReferences.MelangeClientPopup);
+            melangeClientPopup = Instantiate(objectsReferences.MelangeClientPopup);
             melangeClientPopup.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
             AddIngredientToPopup(melangeClientPopup);

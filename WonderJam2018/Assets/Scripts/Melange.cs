@@ -6,6 +6,7 @@ using UnityEngine;
 public class Melange : PickableItem {
     public static Ingredient[] ingredients;
     public Queue<Ingredient> mesIngredients;
+    public int player;
 
     private void OnEnable()
     {

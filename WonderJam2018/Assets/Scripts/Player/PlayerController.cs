@@ -57,7 +57,11 @@ public class PlayerController : MonoBehaviour {
                 hit.collider.gameObject.GetComponent<Interactable>().Highlight(myItem);
 
             if (toInteractWith)
+            {
                 myItem = hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
+                if (myItem as Melange != null)
+                    ((Melange)myItem).player = player;
+            }
 
         }
     }

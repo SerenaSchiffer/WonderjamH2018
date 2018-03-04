@@ -74,9 +74,16 @@ public class UIManager : MonoBehaviour {
         player2Text.transform.position = new Vector2(newX2, player2Text.transform.position.y);
     }
 
-    void UpdateScore()
+    public void UpdateScore(int player, float score)
     {
-        //TODO manage score when player are created
+        //TODO BetterScore
+        if (player == 1)
+            player1Text.text = score.ToString();
+        else if(player == 2)
+        {
+            player2Text.text = score.ToString();
+        }
+        
     }
 
     void UpdateTimerImage()

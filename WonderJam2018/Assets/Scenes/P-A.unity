@@ -381,11 +381,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &519290834 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1938921675609382, guid: 9457ae4a17b8e3843a59229df5a7efce,
+    type: 2}
+  m_PrefabInternal: {fileID: 698121975}
 --- !u!4 &519290835 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4470485200966900, guid: 9457ae4a17b8e3843a59229df5a7efce,
     type: 2}
   m_PrefabInternal: {fileID: 698121975}
+--- !u!95 &519290839
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519290834}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e541549f694d1e498070341744d456b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &547035690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1602,28 @@ GameObject:
   m_PrefabParentObject: {fileID: 1624667981018618, guid: c22e75f0ebed4a24f92c76e11b461062,
     type: 2}
   m_PrefabInternal: {fileID: 1829702324}
+--- !u!1 &1609578450 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1286162761502364, guid: e2d097e1796989d44bdb2aac715a1f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1723569049}
+--- !u!95 &1609578451
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609578450}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bce26651ea9447c4cae44a1e3a374155, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1711449561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,7 +1973,7 @@ Prefab:
     - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
       propertyPath: maxTimer
-      value: 500
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
@@ -1939,6 +1983,46 @@ Prefab:
     - target: {fileID: 114799532546431124, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
       propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224004696702319838, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224004696702319838, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224004696702319838, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224753933760536816, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224753933760536816, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224753933760536816, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224753933760536816, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224753933760536816, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_Pivot.x
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

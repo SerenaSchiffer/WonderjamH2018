@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: Poubelle
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Interract
+  - m_Name: Trashing
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -56,7 +56,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Interract
+    m_ConditionEvent: Trashing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102987574813539794}

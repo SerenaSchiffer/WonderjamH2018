@@ -13,10 +13,14 @@ public class ServiceCounter : Interactable {
 
     public CounterSide side;
     bool isGoodMelange = false;
+    ClientStatePotion potionState = ClientStatePotion.Waiting;
+    StateClient clientState = StateClient.Joy;
     
     Queue<GameObject> clientsEnFile;
 
     [HideInInspector] public Melange potion;
+    UIManager uiManager;
+    Animator myAnimator;
 
     public void Awake()
     {
@@ -25,7 +29,9 @@ public class ServiceCounter : Interactable {
 
 	// Use this for initialization
 	public override void Start () {
-        base.Start();       
+        base.Start();
+        uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        myAnimator = GetComponent<Animator>();      
 	}
 	
 	// Update is called once per frame
@@ -68,7 +74,17 @@ public class ServiceCounter : Interactable {
     {
         if(playerItem as Melange != null && potion != null)
         {
+            if (potion == null)
+                return playerItem;
             isGoodMelange = VerifiIfGoodPotion((Melange)playerItem);
+            if(isGoodMelange)
+            {
+                potionState = ClientStatePotion.Good;
+            }
+            else
+            {
+                potionState = ClientStatePotion.Bad;
+            }
             return null;
         }
         else
@@ -94,22 +110,42 @@ public class ServiceCounter : Interactable {
                     return false;
                 }
             }
+            CalculateScore(playerMelange.player);
+            myAnimator.SetTrigger("Pay");
             return true;
         }
     }
 
-    public bool InteractWithClient(Melange clientMelange)
+    void CalculateScore(int player)
     {
+        float score = potion.MelangeValue();
+        switch (clientState)
+        {
+            case StateClient.Joy:               
+                score += 10f;
+                break;
+            case StateClient.Annoyed:
+                score += 2f;
+                break;
+            default:
+                break;
+        }
+        uiManager.UpdateScore(player, score);
+    }
+
+    public ClientStatePotion InteractWithClient(Melange clientMelange, StateClient clientState)
+    {
+        this.clientState = clientState;
         if(potion == null)
             potion = clientMelange;
-        if(isGoodMelange)
+        if(potionState != ClientStatePotion.Waiting)
         {
-            isGoodMelange = false;
-            return true;
+            potion = null;
+            return potionState;
         }
         else
         {
-            return false;
+            return ClientStatePotion.Waiting;
         }
             
     }
