@@ -130,6 +130,8 @@ public class Chaudron : Interactable {
                 GameObject ingredientImage = (GameObject)Instantiate(Resources.Load("Prefabs/ImageUIChaudron"));
                 ingredientImage.transform.SetParent(UIChaudron.transform, false);
 
+                transform.parent.GetComponent<Animator>().SetTrigger("Shake");
+
                 ingredientImage.GetComponent<Image>().sprite = i.mySprite;
 
                 fallIngredient.GetComponent<SpriteRenderer>().sprite = i.mySprite;
