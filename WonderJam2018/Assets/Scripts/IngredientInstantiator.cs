@@ -89,6 +89,8 @@ public class IngredientInstantiator : MonoBehaviour
         //EffacerTimer?
         Debug.Log("FIN DU TIMER");
         SortTheRestOfIngredients();
+        if(GameLoop.currentState != GameLoop.States.Journee)
+            GameObject.Find("EventSystem").GetComponent<GameLoop>().StartVentes();
     }
 
     public void SortTheRestOfIngredients()
@@ -132,7 +134,6 @@ public class IngredientInstantiator : MonoBehaviour
                 }
             }
         }
-
     }
 
     IEnumerator PutItemInBox(Box box, Item item)

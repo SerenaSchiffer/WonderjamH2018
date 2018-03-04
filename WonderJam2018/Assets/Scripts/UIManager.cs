@@ -46,18 +46,26 @@ public class UIManager : MonoBehaviour {
             test = false;
             //lerpSpeed = 0.01f;
         }
-        LookPosition();
-        //lerpSpeed += 0.03f;
-        timer += Time.deltaTime;
-        UpdateTimerImage();
-        if(timer/maxTimer > swapValue)
+        if (GameLoop.currentState == GameLoop.States.Journee)
         {
-            swapValue += swapFraction;
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            LookPosition();
+            //lerpSpeed += 0.03f;
+            timer += Time.deltaTime;
+            UpdateTimerImage();
+            if (timer / maxTimer > swapValue)
             {
-                go.GetComponent<PlayerController>().SwapPositions();
+                swapValue += swapFraction;
+                foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    go.GetComponent<PlayerController>().SwapPositions();
+                }
+                SwapUI();
             }
-            SwapUI();
+
+            if(timer > maxTimer)
+            {
+                GameObject.Find("EventSystem").GetComponent<GameLoop>().FermerPortes();
+            }
         }
 	}
 

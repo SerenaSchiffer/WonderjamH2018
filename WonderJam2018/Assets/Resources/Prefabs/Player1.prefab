@@ -85,8 +85,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008732242165720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.49, y: -0.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.17, y: 4.18065, z: -0.08872604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4983110362806832}
@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
 --- !u!95 &95571737044514768
 Animator:
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   useKeyboard: 1
-  myItem: {fileID: 11400000, guid: 46aaa6e1f0b57344abf821f4ff83f8f4, type: 2}
-  speed: 7
+  myItem: {fileID: 0}
+  speed: 5
   travelDuration: 1
   swappingPosition: 0
 --- !u!212 &212378505168753888
@@ -288,8 +288,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 24285253
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8478f658b931be141aee378790451cab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -376,8 +376,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -141379741
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
