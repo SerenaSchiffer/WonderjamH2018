@@ -203,6 +203,16 @@ Prefab:
       propertyPath: m_Name
       value: ContainerChaudron (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114788919124278020, guid: 24399e22beadfbb469e2b9363ad19965,
+        type: 2}
+      propertyPath: cookTime
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788919124278020, guid: 24399e22beadfbb469e2b9363ad19965,
+        type: 2}
+      propertyPath: burnTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
   m_IsPrefabParent: 0
@@ -953,7 +963,7 @@ Prefab:
     - target: {fileID: 114879673816185852, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac,
         type: 2}
       propertyPath: spawnTimer
-      value: 150000000
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114658683337166522, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac,
         type: 2}
