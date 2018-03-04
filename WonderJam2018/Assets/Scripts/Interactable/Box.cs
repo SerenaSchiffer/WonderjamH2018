@@ -8,12 +8,16 @@ public class Box : Interactable {
     SpriteRenderer itemRenderer;
     SpriteRenderer parentRenderer;
 
+    [SerializeField] AudioClip audio_Swap;
+    AudioManager audioMixer;
+
 	// Use this for initialization
 	public override void Start () {
         base.Start();
         //myItem = null;
         itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         parentRenderer = transform.parent.gameObject.GetComponent<SpriteRenderer>();
+        audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
     }
 	
 	// Update is called once per frame
@@ -37,11 +41,13 @@ public class Box : Interactable {
             {
                 if (myItem == null)
                 {
+                    audioMixer.PlaySfx(audio_Swap, 0);
                     myItem = (Ingredient)playerItem;
                     return null;
                 }
                 else
                 {
+                    audioMixer.PlaySfx(audio_Swap, 0);
                     Ingredient temp = null;
                     temp = myItem;
                     myItem = (Ingredient)playerItem;

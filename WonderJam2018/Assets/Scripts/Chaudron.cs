@@ -22,9 +22,13 @@ public class Chaudron : Interactable {
     private float originalBurnTime;
     private float originalCookTime;
 
-    [SerializeField] AudioClip PourSomeLiquid;
-    [SerializeField] AudioClip DropItemInWater;
-    [SerializeField] AudioClip LightChaudron;
+    [SerializeField] AudioClip audio_PourSomeLiquid;
+    [SerializeField] AudioClip audio_DropItemInWater;
+    [SerializeField] AudioClip audio_LightChaudron;
+    [SerializeField] AudioClip audio_RecipeReady;
+    [SerializeField] AudioClip audio_Explode;
+    [SerializeField] AudioClip audio_Mix;
+
     private AudioManager audioMixer;
 
     public GameObject UIChaudron;
@@ -81,7 +85,7 @@ public class Chaudron : Interactable {
     {
         if (playerItem as Ingredient != null)
         {
-            audioMixer.PlaySfx(DropItemInWater, 0);
+            audioMixer.PlaySfx(audio_DropItemInWater, 0);
             AddIngredient((Ingredient)playerItem);
             return playerItem;
         }
@@ -92,13 +96,15 @@ public class Chaudron : Interactable {
             switch (state)
             {
                 case ChaudronStates.Preparation:
-                    audioMixer.PlaySfx(LightChaudron, 0);
+                    audioMixer.PlaySfx(audio_LightChaudron, 0);
                     StartCooking();
                     return playerItem;
                 case ChaudronStates.Cooking:
+                    audioMixer.PlaySfx(audio_Mix, 0);
                     Mix();
                     return playerItem;
                 case ChaudronStates.Finished:
+                    audioMixer.PlaySfx(audio_RecipeReady,0);
                     return EmptyChaudron();
                 default:
                     return null;
@@ -150,6 +156,7 @@ public class Chaudron : Interactable {
 
     private void Burn()
     {
+        audioMixer.PlaySfx(audio_Explode, 0);
         Destroy(myMelange);
         myMelange = Instantiate<Melange>(melangeRef);
         cookTime = originalCookTime;

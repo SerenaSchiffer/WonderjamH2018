@@ -134,6 +134,14 @@ MonoBehaviour:
   - {fileID: 9100000, guid: db75c1ce246c30a4dad1115be940fa39, type: 2}
   - {fileID: 9100000, guid: 204ed232cf226324ca0f260b4d016dbd, type: 2}
   - {fileID: 9100000, guid: 6143686e933bdf54b9d9c176aead299d, type: 2}
+  audio_moneySound: {fileID: 8300000, guid: 68450529d7eaed34d94f26596d596a64, type: 3}
+  audio_annoyed: {fileID: 8300000, guid: c6817437cab400646bd5757df8788da6, type: 3}
+  audio_angry: {fileID: 8300000, guid: 6ddc49e741d0d5c4a9752a315a80d00a, type: 3}
+  audio_wrongRecipe: {fileID: 8300000, guid: 3412509a04b71c94a9ee3f2308e0fdea, type: 3}
+  audio_Quitannoyed: {fileID: 8300000, guid: e25ab32735308054c8ab8700231343ea, type: 3}
+  audio_Quitangry: {fileID: 8300000, guid: 305e8c4a8053bb04f8dc48a76b3b4865, type: 3}
+  audio_QuitEnjoyed: {fileID: 8300000, guid: 235f971339afedd41bf8de0fc4093ab5, type: 3}
+  audio_Mix: {fileID: 0}
 --- !u!212 &212059636527251528
 SpriteRenderer:
   m_ObjectHideFlags: 1
