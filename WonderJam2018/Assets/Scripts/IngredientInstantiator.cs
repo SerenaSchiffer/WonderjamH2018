@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Security.Cryptography;
 
 public class IngredientInstantiator : MonoBehaviour
@@ -24,6 +25,7 @@ public class IngredientInstantiator : MonoBehaviour
         ingredientContainer.tag = "IngredientsLoose";
         ingredientContainer.gameObject.GetComponent<AssetIdentity>().SetPlayerIdentity(gameObject.GetComponent<AssetIdentity>().GetPlayerIdentity());
         StartCoroutine(SpawnItems());
+        timeLeft = 00;
     }
 
     IEnumerator SpawnItems()
@@ -74,14 +76,34 @@ public class IngredientInstantiator : MonoBehaviour
     void StartTimer()
     {
         timerCounter = phaseTime;
+        timeLeft = phaseTime;
+        if (GetComponent<AssetIdentity>().GetPlayerIdentity() == 1)
+            GameObject.Find("Timer").GetComponent<Animator>().SetTrigger("Toggle");
+
         Invoke("EndOfPhase", phaseTime);
+    }
+
+    float timeLeft;
+
+    void Update()
+    {
+
+        if (GetComponent<AssetIdentity>().GetPlayerIdentity() == 1)
+        { 
+            GameObject.Find("Timer").GetComponentInChildren<Text>().text = "00:" + timeLeft.ToString("00");
+            timeLeft -= Time.deltaTime;
+        }
     }
 
     public void EndOfPhase()
     {
         //EffacerTimer?
         SortTheRestOfIngredients();
-        if(GameLoop.currentState != GameLoop.States.Journee)
+
+        if (GetComponent<AssetIdentity>().GetPlayerIdentity() == 1)
+            GameObject.Find("Timer").GetComponent<Animator>().SetTrigger("Toggle");
+
+        if (GameLoop.currentState != GameLoop.States.Journee)
             GameObject.Find("EventSystem").GetComponent<GameLoop>().StartVentes();
     }
 

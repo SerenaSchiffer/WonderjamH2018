@@ -51,6 +51,7 @@ public class GameLoop : MonoBehaviour {
 
         // Activer l'horloge et le swap
         GameObject.Find("Canvas").GetComponent<UIManager>();
+        GameObject.Find("Timer").GetComponent<Animator>().SetTrigger("Toggle");
 
         clientSpawner1.SetActive(true);
         clientSpawner2.SetActive(true);
