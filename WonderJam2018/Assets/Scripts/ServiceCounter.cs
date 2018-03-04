@@ -46,7 +46,8 @@ public class ServiceCounter : Interactable {
 
     public void PopClientFromQueue()
     {
-        clientsEnFile.Dequeue();
+        if(clientsEnFile.Count > 0)
+            clientsEnFile.Dequeue();
     }
 
     public bool IsQueueFull()

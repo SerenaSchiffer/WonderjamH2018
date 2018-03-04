@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myItem: {fileID: 0}
+  swapSound: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+  fadeInTime: 0
   travelDuration: 1
   swappingPosition: 0
 --- !u!212 &212549917942609156

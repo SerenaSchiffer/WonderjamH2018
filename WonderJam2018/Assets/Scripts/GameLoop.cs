@@ -10,6 +10,9 @@ public class GameLoop : MonoBehaviour {
         Journee,
         Closed
     }
+    [SerializeField] AudioClip DuringDay;
+    [SerializeField] AudioClip AfterDay;
+    AudioManager audioMixer;
 
     public static States currentState;
     public GameObject rideau;
@@ -29,8 +32,15 @@ public class GameLoop : MonoBehaviour {
         rideauTemps = 0f;
     }
 
+    private void Start()
+    {
+        audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
+        audioMixer.PlayMusic(DuringDay);
+    }
+
     public void StartVentes()
     {
+        
         // Monter le Rideau
         rideauTarget = rideau.transform.position + Vector3.up * 5f;
         rideau.GetComponent<BoxCollider2D>().enabled = false;
@@ -46,6 +56,7 @@ public class GameLoop : MonoBehaviour {
 
     public void FermerPortes()
     {
+        audioMixer.PlayMusic(AfterDay);
         //Faire le panel de fermeture
         GameObject.Find("ClosedSign").GetComponent<Animator>().SetTrigger("CloseSign");
 

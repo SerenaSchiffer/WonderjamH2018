@@ -22,6 +22,11 @@ public class Chaudron : Interactable {
     private float originalBurnTime;
     private float originalCookTime;
 
+    [SerializeField] AudioClip PourSomeLiquid;
+    [SerializeField] AudioClip DropItemInWater;
+    [SerializeField] AudioClip LightChaudron;
+    private AudioManager audioMixer;
+
     public GameObject UIChaudron;
 
     private Animator myAnimator;
@@ -41,6 +46,7 @@ public class Chaudron : Interactable {
         
         state = ChaudronStates.Preparation;
         myAnimator = GetComponent<Animator>();
+        audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
     }
 
     public override void Update()
@@ -65,6 +71,7 @@ public class Chaudron : Interactable {
     {
         if (playerItem as Ingredient != null)
         {
+            audioMixer.PlaySfx(DropItemInWater, 0);
             AddIngredient((Ingredient)playerItem);
             return playerItem;
         }
@@ -75,6 +82,7 @@ public class Chaudron : Interactable {
             switch (state)
             {
                 case ChaudronStates.Preparation:
+                    audioMixer.PlaySfx(LightChaudron, 0);
                     StartCooking();
                     return playerItem;
                 case ChaudronStates.Cooking:
