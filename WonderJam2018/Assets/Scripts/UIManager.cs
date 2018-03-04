@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour {
         else if(player == 2)
         {
             Score.scoreP2 += score;
-            player1Text.text = Score.scoreP2.ToString();
+            player2Text.text = Score.scoreP2.ToString();
         }
         
     }

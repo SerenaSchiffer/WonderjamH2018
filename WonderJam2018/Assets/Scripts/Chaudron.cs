@@ -107,7 +107,7 @@ public class Chaudron : Interactable {
                     Mix();
                     return playerItem;
                 case ChaudronStates.Finished:
-                    audioMixer.PlaySfx(audio_RecipeReady,0);
+                    //audioMixer.PlaySfx(audio_RecipeReady,0);
                     return EmptyChaudron();
                 default:
                     return null;
@@ -184,6 +184,7 @@ public class Chaudron : Interactable {
 
     private void FinishCooking()
     {
+        audioMixer.PlaySfx(audio_RecipeReady, 0);
         state = ChaudronStates.Finished;
         burnTime = originalBurnTime;
         myAnimator.SetTrigger("FinishCooking");

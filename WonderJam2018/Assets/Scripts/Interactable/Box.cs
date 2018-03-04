@@ -7,6 +7,7 @@ public class Box : Interactable {
     public Ingredient myItem;
     SpriteRenderer itemRenderer;
     SpriteRenderer parentRenderer;
+    public int buffer;
 
     [SerializeField] AudioClip audio_Swap;
     AudioManager audioMixer;
@@ -18,6 +19,7 @@ public class Box : Interactable {
         itemRenderer = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         parentRenderer = transform.parent.gameObject.GetComponent<SpriteRenderer>();
         audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
+        buffer = 0;
     }
 	
 	// Update is called once per frame
@@ -31,10 +33,14 @@ public class Box : Interactable {
         {
             itemRenderer.sprite = null;
         }
+        if (buffer > 0)
+            buffer--;
 	}
 
     public override PickableItem InteractWithPlayer(PickableItem playerItem)
     {
+        if (buffer > 0)
+            return playerItem;
         if (playerItem as Ingredient != null)
         {
             if (playerItem != null)
@@ -55,8 +61,9 @@ public class Box : Interactable {
                 }
             }
             else
-            {                
-                    return null;
+            {
+                
+                return null;
             }
 
         }
@@ -69,9 +76,10 @@ public class Box : Interactable {
             
             if (myItem != null)
             {
-            Ingredient temp = myItem;
-            myItem = null;
-            return temp;
+                audioMixer.PlaySfx(audio_Swap, 0);
+                Ingredient temp = myItem;
+                myItem = null;
+                return temp;
             }
             return null;
         }

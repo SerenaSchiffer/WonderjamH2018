@@ -153,6 +153,13 @@ public class Client : MonoBehaviour {
 
         if (hasArrived)
             timer -= Time.deltaTime;
+        if(hasTerminated)
+        {
+            if (myCounter.side == CounterSide.Left)
+                rb.velocity = new Vector2(-1f, 0f);
+            else
+                rb.velocity = new Vector2(1f, 0f);
+        }
 
         if(melangeState == ClientStatePotion.Waiting)
         {
@@ -169,10 +176,7 @@ public class Client : MonoBehaviour {
 
     private void ExitShop()
     {
-        if (myCounter.side == CounterSide.Left)
-            rb.velocity = new Vector2(-1f, 0f);
-        else
-            rb.velocity = new Vector2(1f, 0f);
+        
         hasTerminated = true;
         myCounter.PopClientFromQueue();
         Destroy(melangeClientPopup);
