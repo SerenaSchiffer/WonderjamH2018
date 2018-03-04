@@ -41,7 +41,6 @@ public class Chaudron : Interactable {
         
         state = ChaudronStates.Preparation;
         myAnimator = GetComponent<Animator>();
-        UIChaudron.transform.position = Camera.main.WorldToScreenPoint(transform.position);
     }
 
     public override void Update()
