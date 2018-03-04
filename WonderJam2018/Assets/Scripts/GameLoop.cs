@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLoop : MonoBehaviour {
 
@@ -90,14 +91,13 @@ public class GameLoop : MonoBehaviour {
                 }
             }
             currentState = States.EndDay;
-            Debug.Log("caliss");
             if(Score.scoreP1 > Score.scoreP2)
             {
-                //TODO load p1 win
+                SceneManager.LoadScene("P1win");
             }
             else
             {
-                //TODO load p2 win
+                SceneManager.LoadScene("P2win");
             }
         }
     }

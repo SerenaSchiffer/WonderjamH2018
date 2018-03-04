@@ -168,6 +168,7 @@ public class Chaudron : Interactable {
         myMelange = Instantiate<Melange>(melangeRef);
         cookTime = originalCookTime;
         burnTime = originalBurnTime;
+        EmptyUI();
 
         state = ChaudronStates.Preparation;
         myAnimator.SetTrigger("Burn");        
@@ -191,7 +192,6 @@ public class Chaudron : Interactable {
     //Cooking time fini
     private Melange EmptyChaudron()
     {
-        // TODO : Gérer de servir le mélange
         Melange temp = myMelange;
         myMelange = null;
         myMelange = Instantiate<Melange>(melangeRef);
