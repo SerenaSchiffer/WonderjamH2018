@@ -61,7 +61,7 @@ public class Item : Interactable {
 
     public override void Highlight(PickableItem playerItem)
     {
-        if (playerItem as Melange == null)
+        if (playerItem == null)
         {
             base.Highlight(playerItem);
         }
