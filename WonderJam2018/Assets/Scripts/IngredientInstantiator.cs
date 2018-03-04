@@ -12,7 +12,7 @@ public class IngredientInstantiator : MonoBehaviour
     [SerializeField] float phaseTime;
 
     private List<Ingredient> ingredientList;
-    public float timerCounter;
+    private float timerCounter;
     private GameObject ingredientContainer;
 
     // Use this for initialization
@@ -31,14 +31,7 @@ public class IngredientInstantiator : MonoBehaviour
         yield return new WaitForSeconds(2f);
         StartSortingPhase();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (timerCounter >= 0)
-            timerCounter -= Time.deltaTime;
-    }
-
+    
     public void StartSortingPhase()
     {
         //Spawn ingredient on the ground
@@ -87,7 +80,6 @@ public class IngredientInstantiator : MonoBehaviour
     public void EndOfPhase()
     {
         //EffacerTimer?
-        Debug.Log("FIN DU TIMER");
         SortTheRestOfIngredients();
         if(GameLoop.currentState != GameLoop.States.Journee)
             GameObject.Find("EventSystem").GetComponent<GameLoop>().StartVentes();
