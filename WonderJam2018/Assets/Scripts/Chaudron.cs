@@ -28,6 +28,9 @@ public class Chaudron : Interactable {
 
     public const int maxIngredient = 3;
 
+    public GameObject particulesBurn;
+    public GameObject alertBurn;
+
     public override void Start()
     {
         base.Start();
@@ -48,6 +51,9 @@ public class Chaudron : Interactable {
             return;
         burnTime -= Time.deltaTime;
         cookTime -= Time.deltaTime;
+        
+        alertBurn.SetActive(burnTime < 4f);
+        particulesBurn.SetActive(burnTime < 4f);
 
         if (burnTime < float.Epsilon)
             Burn();
