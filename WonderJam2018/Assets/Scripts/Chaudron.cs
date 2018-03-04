@@ -95,7 +95,7 @@ public class Chaudron : Interactable {
             if(myMelange.mesIngredients.Count < maxIngredient)
             {
                 myMelange.AddIngredient(i);
-                GameObject ingredientImage = (GameObject)Instantiate(Resources.Load("Prefabs/ImageUI"));
+                GameObject ingredientImage = (GameObject)Instantiate(Resources.Load("Prefabs/ImageUIChaudron"));
                 ingredientImage.transform.SetParent(UIChaudron.transform, false);
 
                 ingredientImage.GetComponent<Image>().sprite = i.mySprite;
