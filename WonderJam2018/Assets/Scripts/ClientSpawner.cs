@@ -42,7 +42,7 @@ public class ClientSpawner : MonoBehaviour {
                 GameObject newClient = Instantiate(objectsReferences.Client, spawnPosition, new Quaternion()); //TODO donner un rotation qui a de l'allure
                 newClient.transform.parent = objectsReferences.ContainerClients.transform;
             }
-            spawnTimer = Mathf.Clamp(spawnTimer - 1, 15, 25);
+            spawnTimer = Mathf.Clamp(spawnTimer - 1, 10, 20);
             timer = spawnTimer;
         }
 

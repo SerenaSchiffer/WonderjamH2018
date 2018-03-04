@@ -2972,6 +2972,16 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114788919124278020, guid: 24399e22beadfbb469e2b9363ad19965,
+        type: 2}
+      propertyPath: cookTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788919124278020, guid: 24399e22beadfbb469e2b9363ad19965,
+        type: 2}
+      propertyPath: burnTime
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
   m_IsPrefabParent: 0
@@ -10426,7 +10436,7 @@ Prefab:
     - target: {fileID: 114879673816185852, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac,
         type: 2}
       propertyPath: spawnTimer
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
@@ -12323,7 +12333,7 @@ Prefab:
     - target: {fileID: 114879673816185852, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac,
         type: 2}
       propertyPath: spawnTimer
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d50e9bcff6d42b4c96ea7e90e4c6fac, type: 2}
@@ -16684,7 +16694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1897346324
 Transform:
   m_ObjectHideFlags: 0

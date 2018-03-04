@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1198163135748466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.99, y: 1.72, z: 0}
+  m_LocalPosition: {x: -2.99, y: 1.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children:
   - {fileID: 4621640633259548}
@@ -347,14 +347,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
-  cookTime: 20
-  burnTime: 12
-  audio_PourSomeLiquid: {fileID: 0}
-  audio_DropItemInWater: {fileID: 0}
-  audio_LightChaudron: {fileID: 0}
-  audio_RecipeReady: {fileID: 0}
-  audio_Explode: {fileID: 0}
-  audio_Mix: {fileID: 0}
+  cookTime: 12
+  burnTime: 8
+  audio_PourSomeLiquid: {fileID: 8300000, guid: f11f8a46d4161e6438aa396dfd671461,
+    type: 3}
+  audio_DropItemInWater: {fileID: 8300000, guid: 302486f8507c1b94daabf3917c38fc1e,
+    type: 3}
+  audio_LightChaudron: {fileID: 8300000, guid: 5816edf93db80a84dad45291cfc4e649, type: 3}
+  audio_RecipeReady: {fileID: 8300000, guid: 5bee6723b770a0a4bb2c01d5bb9a74f7, type: 3}
+  audio_Explode: {fileID: 8300000, guid: 114ca1a0a3712c948ae16cb9d26a204c, type: 3}
+  audio_Mix: {fileID: 8300000, guid: d88c2265d1e4078499febb1552408b55, type: 3}
   UIChaudron: {fileID: 0}
   particulesBurn: {fileID: 1806027024621906}
   alertBurn: {fileID: 1361831127330276}
