@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
-  maxTimer: 10
+  maxTimer: 60
   melangeClient: {fileID: 0}
   myCounter: {fileID: 0}
   animController:

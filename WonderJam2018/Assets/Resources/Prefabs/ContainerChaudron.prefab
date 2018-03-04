@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4820274292044060}
   - component: {fileID: 212329439339842062}
+  - component: {fileID: 95727141756163812}
   m_Layer: 8
   m_Name: ContainerChaudron
   m_TagString: Untagged
@@ -300,6 +301,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95727141756163812
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198163135748466}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e9fd574abe2ba74d89b5fb82f3db571, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95840734355699832
 Animator:
   serializedVersion: 3
@@ -331,9 +349,12 @@ MonoBehaviour:
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
   cookTime: 20
   burnTime: 12
-  PourSomeLiquid: {fileID: 8300000, guid: f11f8a46d4161e6438aa396dfd671461, type: 3}
-  DropItemInWater: {fileID: 0}
-  LightChaudron: {fileID: 8300000, guid: 5816edf93db80a84dad45291cfc4e649, type: 3}
+  audio_PourSomeLiquid: {fileID: 0}
+  audio_DropItemInWater: {fileID: 0}
+  audio_LightChaudron: {fileID: 0}
+  audio_RecipeReady: {fileID: 0}
+  audio_Explode: {fileID: 0}
+  audio_Mix: {fileID: 0}
   UIChaudron: {fileID: 0}
   particulesBurn: {fileID: 1806027024621906}
   alertBurn: {fileID: 1361831127330276}

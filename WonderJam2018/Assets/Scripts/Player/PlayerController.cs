@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour {
                     itemRenderer.gameObject.SetActive(false);
                     potionContentRenderer.transform.parent.gameObject.SetActive(true);
                     potionContentRenderer.color = ((Melange)myItem).MelangeColor();
+                    ((Melange)myItem).player = player;
                 }
             }
             else
