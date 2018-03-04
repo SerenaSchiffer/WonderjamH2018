@@ -55,7 +55,7 @@ public class Item : Interactable {
         }
         else
         {
-            return myItem;
+            return playerItem;
         }
     }
 
