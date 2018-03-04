@@ -51,6 +51,11 @@ public class UIManager : MonoBehaviour {
             LookPosition();
             //lerpSpeed += 0.03f;
             timer += Time.deltaTime;
+            if (timer > maxTimer)
+            {
+                GameObject.Find("EventSystem").GetComponent<GameLoop>().FermerPortes();
+                return;
+            }
             UpdateTimerImage();
             if (timer / maxTimer > swapValue)
             {
@@ -62,10 +67,6 @@ public class UIManager : MonoBehaviour {
                 SwapUI();
             }
 
-            if(timer > maxTimer)
-            {
-                GameObject.Find("EventSystem").GetComponent<GameLoop>().FermerPortes();
-            }
         }
 	}
 

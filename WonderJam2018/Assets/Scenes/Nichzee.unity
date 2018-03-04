@@ -4484,7 +4484,7 @@ Prefab:
     - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
       propertyPath: maxTimer
-      value: 120
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c22e75f0ebed4a24f92c76e11b461062, type: 2}
@@ -7557,7 +7557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728fa221266f7834daea6ef8abcf5666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   rideau: {fileID: 87153635}
 --- !u!1 &907947352
 GameObject:
