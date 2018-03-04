@@ -6,19 +6,27 @@ public class Item : Interactable {
 
     public Ingredient myItem;
 
+    private AudioManager audioMixer;
+    [SerializeField] private AudioClip swapSound;
+
     public float fadeInTime = 0f;
 
 	// Use this for initialization
 	void Start () {
         base.Start();
         mySprite = GetComponent<SpriteRenderer>();
-
+        audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
     }
 
     SpriteRenderer mySprite;
 	// Update is called once per frame
 	void Update () {
         base.Update();
+
+        if(audioMixer == null)
+        {
+            audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
+        }
 
         if (fadeInTime < 1f)
         {
@@ -59,6 +67,7 @@ public class Item : Interactable {
         {
             Ingredient temp = myItem;
             ResetSprite(null);
+            audioMixer.PlaySfx(swapSound, 0);
             Invoke("AutoDestroy", 0.05f);
             return temp;
 

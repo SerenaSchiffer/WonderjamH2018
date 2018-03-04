@@ -332,6 +332,9 @@ MonoBehaviour:
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
   cookTime: 20
   burnTime: 12
+  PourSomeLiquid: {fileID: 8300000, guid: f11f8a46d4161e6438aa396dfd671461, type: 3}
+  DropItemInWater: {fileID: 0}
+  LightChaudron: {fileID: 8300000, guid: 5816edf93db80a84dad45291cfc4e649, type: 3}
   UIChaudron: {fileID: 0}
   particulesBurn: {fileID: 1806027024621906}
   alertBurn: {fileID: 1361831127330276}
@@ -3825,8 +3828,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -141379741
-  m_SortingLayer: 4
+  m_SortingLayerID: -251363987
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 82ebabb83f8010b4fbb8b19109c2aca7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4003,7 +4006,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -251363987
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bc562f2d2f601654b968f476d9a1ed37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -123,7 +123,7 @@ public class Client : MonoBehaviour {
                 hasArrived = true;
                 rb.velocity = new Vector2(0, -1);
                 if(melangeClientPopup)
-                    melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(transform.posi);
+                    melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f,0.56f, 0));
             }
         }
     }
