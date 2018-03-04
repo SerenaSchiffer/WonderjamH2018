@@ -11,6 +11,8 @@ public class IngredientInstantiator : MonoBehaviour
     [SerializeField] GameObject[] allBoxesOfPlayer;
     [SerializeField] float phaseTime;
 
+    [SerializeField] AudioClip swap;
+
     private List<Ingredient> ingredientList;
     private float timerCounter;
     private GameObject ingredientContainer;
@@ -67,7 +69,8 @@ public class IngredientInstantiator : MonoBehaviour
             newInstance.transform.position = gameObject.transform.GetChild(0).transform.position;
             newInstance.GetComponent<SpriteRenderer>().sprite = ingredientList[nextRandom].mySprite;
             newInstance.GetComponent<Item>().SetItem(ingredientList[nextRandom]);
-            newInstance.gameObject.AddComponent<AudioSource>();
+            newInstance.GetComponent<Item>().audioSource = newInstance.gameObject.AddComponent<AudioSource>();
+            newInstance.GetComponent<Item>().swap = swap;
             ingredientList.RemoveAt(nextRandom);
         }
     }

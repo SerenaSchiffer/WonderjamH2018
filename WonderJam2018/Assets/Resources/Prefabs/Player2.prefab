@@ -151,6 +151,9 @@ MonoBehaviour:
   useKeyboard: 1
   myItem: {fileID: 0}
   speed: 7
+  IsSwapped: 0
+  travelDuration: 1
+  swappingPosition: 0
 --- !u!212 &212633049937369536
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1785,6 +1785,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1198163135748466, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
+      propertyPath: m_TagString
+      value: Chaudron
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
   m_IsPrefabParent: 0
@@ -2438,6 +2442,10 @@ Prefab:
         type: 2}
       propertyPath: m_SortingLayer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198163135748466, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
+      propertyPath: m_TagString
+      value: Chaudron
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
@@ -3159,6 +3167,10 @@ Prefab:
     - target: {fileID: 4911109225923240, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198163135748466, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
+      propertyPath: m_TagString
+      value: Chaudron
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
@@ -5074,6 +5086,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1458487318}
     m_Modifications:
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4806778842600118, guid: 10fa70e31308b524f883c460bd44e13d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.07
@@ -5185,6 +5202,26 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c6f0d2e6b43f794191811385c194241, type: 3}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5144edf90d08ae248aaff592caa970e3, type: 3}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10fa70e31308b524f883c460bd44e13d, type: 2}
   m_IsPrefabParent: 0
@@ -5459,6 +5496,91 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &568001603 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008732242165720, guid: 2622905a25e2efe4ebe7db51f7527e6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 75902607}
+--- !u!82 &568001604
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568001603}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &571097431 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1624667981018618, guid: c22e75f0ebed4a24f92c76e11b461062,
@@ -7542,6 +7664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rideau: {fileID: 87153635}
+  DuringDay: {fileID: 0}
+  AfterDay: {fileID: 0}
 --- !u!1 &907947352
 GameObject:
   m_ObjectHideFlags: 0
@@ -8535,6 +8659,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1800779844}
     m_Modifications:
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4806778842600118, guid: 10fa70e31308b524f883c460bd44e13d, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.69
@@ -8643,6 +8772,26 @@ Prefab:
       propertyPath: timerCounter
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c6f0d2e6b43f794191811385c194241, type: 3}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: interactions.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5144edf90d08ae248aaff592caa970e3, type: 3}
+    - target: {fileID: 114901994171316798, guid: 10fa70e31308b524f883c460bd44e13d,
+        type: 2}
+      propertyPath: swap
+      value: 
+      objectReference: {fileID: 8300000, guid: f26f4bb003f6d2b4f9742a56ca8ebc85, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10fa70e31308b524f883c460bd44e13d, type: 2}
   m_IsPrefabParent: 0
@@ -11179,6 +11328,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1198163135748466, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
+      propertyPath: m_TagString
+      value: Chaudron
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
   m_IsPrefabParent: 0
@@ -12304,6 +12457,10 @@ Prefab:
       propertyPath: UIChaudron
       value: 
       objectReference: {fileID: 571097431}
+    - target: {fileID: 1198163135748466, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
+      propertyPath: m_TagString
+      value: Chaudron
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
   m_IsPrefabParent: 0
@@ -18501,6 +18658,10 @@ Prefab:
     - target: {fileID: 4911109225923240, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198163135748466, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}
+      propertyPath: m_TagString
+      value: Chaudron
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24399e22beadfbb469e2b9363ad19965, type: 2}

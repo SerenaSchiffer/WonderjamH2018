@@ -5,11 +5,12 @@ using UnityEngine;
 public class Item : Interactable {
 
     public Ingredient myItem;
+    [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public AudioClip swap;
     
 	// Use this for initialization
 	void Start () {
         base.Start();
-        audioSource = new AudioSource();
 	}
 	
 	// Update is called once per frame
@@ -47,7 +48,8 @@ public class Item : Interactable {
     {
         if (playerItem as Ingredient == null)
         {
-            //AudioSource audioSource = ((Ingredient)playerItem).
+            audioSource.clip = swap;
+            //audioSource.Play();
             Ingredient temp = myItem;
             ResetSprite(null);
             Invoke("AutoDestroy", 0.05f);

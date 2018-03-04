@@ -211,6 +211,7 @@ MonoBehaviour:
   useKeyboard: 1
   myItem: {fileID: 0}
   speed: 5
+  IsSwapped: 0
   travelDuration: 1
   swappingPosition: 0
 --- !u!212 &212378505168753888

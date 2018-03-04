@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     float speed = 1;
 
+    [SerializeField]
+    AudioClip[] clips;
+
     public bool IsSwapped;
     SpriteRenderer itemRenderer;
     SpriteRenderer potionContentRenderer;
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     SpriteRenderer spriteRenderer;
     const bool WillInteract = true;
     GameObject otherPlayer;
+    AudioSource audioSource;
 
     Vector2 directionToRaycast;
 
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour {
         myAnim.SetBool("FaceFront", true);
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -60,6 +65,11 @@ public class PlayerController : MonoBehaviour {
 
             if (toInteractWith)
             {
+                if (hit.collider.tag == "Box")
+                {
+                    audioSource.clip = clips[0];
+                }
+
                 myItem = hit.collider.gameObject.GetComponent<Interactable>().InteractWithPlayer(myItem);
                 if (myItem as Melange != null)
                     ((Melange)myItem).player = player;
