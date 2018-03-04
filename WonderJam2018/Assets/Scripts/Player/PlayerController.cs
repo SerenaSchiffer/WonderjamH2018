@@ -250,6 +250,14 @@ public class PlayerController : MonoBehaviour {
         swappingPosition = true;
     }
 
+    public void TranslateToPosition(Vector3 position)
+    {
+        targetPos = position;
+        originalPos = transform.position;
+        travelTime = 0f;
+        swappingPosition = true;
+    }
+
 }
 
 [System.Serializable]

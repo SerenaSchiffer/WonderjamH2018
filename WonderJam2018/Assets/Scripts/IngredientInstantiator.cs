@@ -161,7 +161,7 @@ public class IngredientInstantiator : MonoBehaviour
             }
         }
 
-
+        actualPlayer.GetComponent<PlayerController>().TranslateToPosition(transform.position);
 
         if (actualPlayer != null)
         {
