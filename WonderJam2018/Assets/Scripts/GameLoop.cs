@@ -83,7 +83,7 @@ public class GameLoop : MonoBehaviour {
         {
             for(int i = 0; i < serviceCounters.Length; i++)
             {
-                Debug.Log(i + "     " + serviceCounters[i].GetQueueCount())
+                Debug.Log(i + "     " + serviceCounters[i].GetQueueCount());
                 if(serviceCounters[i].GetQueueCount() > 0)
                 {
                     return;
