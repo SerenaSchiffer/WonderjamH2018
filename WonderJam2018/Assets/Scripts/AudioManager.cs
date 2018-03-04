@@ -29,9 +29,8 @@ public class AudioManager : MonoBehaviour {
 
     public void PlaySfx(AudioClip aclip, float timeToLoop)
     {
-        sfx.clip = aclip;
         sfx.loop = timeToLoop ==0 ? false : true;
-        sfx.Play();
+        sfx.PlayOneShot(aclip);
 
         if(sfx.loop)
             Invoke("StopSfx", timeToLoop);

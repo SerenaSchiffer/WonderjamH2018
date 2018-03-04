@@ -38,8 +38,23 @@ public class Client : MonoBehaviour {
     StateClient clientState = StateClient.Joy;
     GameObject melangeClientPopup;
 
+    [SerializeField] AudioClip audio_moneySound;
+    [SerializeField] AudioClip audio_annoyed;
+    [SerializeField] AudioClip audio_angry;
+    [SerializeField] AudioClip audio_wrongRecipe;
+
+    [SerializeField] AudioClip audio_Quitannoyed;
+    [SerializeField] AudioClip audio_Quitangry;
+    [SerializeField] AudioClip audio_QuitEnjoyed;
+
+    [SerializeField] AudioClip audio_Mix;
+
+    private AudioManager audioMixer;
+
+
     // Use this for initialization
     void Start () {
+        audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
         timer = maxTimer;
         hasArrived = false;
         rb = GetComponent<Rigidbody2D>();
@@ -73,12 +88,23 @@ public class Client : MonoBehaviour {
         }
         else if (timer >= (maxTimer / 3) && timer < (maxTimer / 3) * 2)
         {
+            if (audio_annoyed)
+            {
+                audioMixer.PlaySfx(audio_annoyed, 0);
+                audio_annoyed = null;
+            }
+
             animator.SetBool("Annoyed", true);
             animator.SetBool("Idle", false);
             clientState = StateClient.Annoyed;
         }
         else if (timer >= 0 && timer < (maxTimer / 3))
         {
+            if (audio_angry != null)
+            {
+                audioMixer.PlaySfx(audio_angry, 0);
+                audio_angry = null;
+            }
             animator.SetBool("Angry", true);
             animator.SetBool("Annoyed", false);
             clientState = StateClient.Angry;
@@ -91,18 +117,29 @@ public class Client : MonoBehaviour {
         if(melangeState == ClientStatePotion.Good)
         {
             //TODO donner plus d'argent si content
-            if(!animator.GetBool("Angry"))
+            if (audio_moneySound != null)
+            {
+                audioMixer.PlaySfx(audio_moneySound, 0);
+                audio_moneySound = null;
+            }
+            if (!animator.GetBool("Angry"))
             {
                 animator.SetBool("Joy", true);
                 animator.SetBool("Annoyed", false);
                 animator.SetBool("Idle", false);
             }
             melangeState = ClientStatePotion.Finished;
+            audioMixer.PlaySfx(audio_moneySound, 0);
             ExitShop();
 
         }
         else if(melangeState == ClientStatePotion.Bad)
         {
+            if (audio_wrongRecipe != null)
+            {
+                audioMixer.PlaySfx(audio_wrongRecipe, 0);
+                audio_wrongRecipe = null;
+            }
             if (!animator.GetBool("Angry"))
             {
                 animator.SetBool("Angry", true);

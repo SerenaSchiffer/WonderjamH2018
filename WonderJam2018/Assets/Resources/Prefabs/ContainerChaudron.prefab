@@ -280,12 +280,17 @@ MonoBehaviour:
   melangeRef: {fileID: 11400000, guid: 8709a0982b12ee94a8ebe54f64099707, type: 2}
   cookTime: 20
   burnTime: 12
-  PourSomeLiquid: {fileID: 8300000, guid: f11f8a46d4161e6438aa396dfd671461, type: 3}
-  DropItemInWater: {fileID: 0}
-  LightChaudron: {fileID: 8300000, guid: 5816edf93db80a84dad45291cfc4e649, type: 3}
+  audio_PourSomeLiquid: {fileID: 8300000, guid: f11f8a46d4161e6438aa396dfd671461,
+    type: 3}
+  audio_DropItemInWater: {fileID: 0}
+  audio_LightChaudron: {fileID: 8300000, guid: 5816edf93db80a84dad45291cfc4e649, type: 3}
+  audio_RecipeReady: {fileID: 0}
+  audio_Explode: {fileID: 8300000, guid: 114ca1a0a3712c948ae16cb9d26a204c, type: 3}
+  audio_Mix: {fileID: 0}
   UIChaudron: {fileID: 0}
   particulesBurn: {fileID: 1806027024621906}
   alertBurn: {fileID: 1361831127330276}
+  fallIngredient: {fileID: 0}
 --- !u!198 &198466713434995204
 ParticleSystem:
   m_ObjectHideFlags: 1
