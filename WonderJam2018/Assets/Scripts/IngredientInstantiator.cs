@@ -297,9 +297,9 @@ public class IngredientInstantiator : MonoBehaviour
         }
 
 
-        if (actualPlayer != null)
+        if (actualPlayer != null && actualPlayer.GetComponent<PlayerController>().myItem != null)
         {
-            if (allBoxesOfPlayer.Length != RightSetOfIngredients.transform.childCount && actualPlayer.GetComponent<PlayerController>().myItem != null)
+            if (actualPlayer.GetComponent<PlayerController>().myItem.typedeItem == TypeItem.Ingredient)
             {
                 GameObject newInstance = Instantiate(ingredientGameobject, ingredientContainer.transform, true);
                 newInstance.transform.position = actualPlayer.transform.position;

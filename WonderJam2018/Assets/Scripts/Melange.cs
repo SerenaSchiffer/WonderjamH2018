@@ -10,6 +10,7 @@ public class Melange : PickableItem {
 
     private void OnEnable()
     {
+        typedeItem = TypeItem.Potion;
         if (ingredients == null)
             ingredients = Resources.LoadAll<Ingredient>("ScriptableObject/Ingredients");
         if (mesIngredients == null)

@@ -8,4 +8,9 @@ public class Ingredient : PickableItem {
     public string ingredientName;
     public int baseIngredientValue;
     public Color mainColor;
+
+    public void OnEnable()
+    {
+        typedeItem = TypeItem.Ingredient;
+    }
 }
