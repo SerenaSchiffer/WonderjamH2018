@@ -143,8 +143,17 @@ public class PlayerController : MonoBehaviour {
             {
                 Vector2 newSpeed = Vector2.zero;
 
-                newSpeed += new Vector2(Input.GetAxisRaw("Horizontal"+player), 0);
-                newSpeed += new Vector2(0, Input.GetAxisRaw("Vertical"+ player));
+                if (Input.GetAxisRaw("Horizontal" + player) != 0.0f || Input.GetAxisRaw("Vertical" + player) != 0.0f)
+                {
+                    newSpeed += new Vector2(Input.GetAxisRaw("Horizontal" + player), 0);
+                    newSpeed += new Vector2(0, Input.GetAxisRaw("Vertical"+ player));
+                }
+                else
+                {
+                    newSpeed += new Vector2(Input.GetAxisRaw("HorizontalD" + player), 0);
+                    newSpeed += new Vector2(0, Input.GetAxisRaw("VerticalD" + player));
+                }
+                
 
                 if (newSpeed.magnitude != Vector2.zero.magnitude)
                 {
