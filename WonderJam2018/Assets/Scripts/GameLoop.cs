@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameLoop : MonoBehaviour {
@@ -26,6 +27,10 @@ public class GameLoop : MonoBehaviour {
     public GameObject clientSpawner1, clientSpawner2;
     public ServiceCounter[] serviceCounters;
 
+    [SerializeField] Sprite winImageP1;
+    [SerializeField] Sprite winImageP2;
+    [SerializeField] RuntimeAnimatorController animatorWin1;
+    [SerializeField] RuntimeAnimatorController animatorWin2;
 
     public void Awake()
     {
@@ -92,13 +97,19 @@ public class GameLoop : MonoBehaviour {
                 }
             }
             currentState = States.EndDay;
-            if(Score.scoreP1 > Score.scoreP2)
+
+            GameObject winScreen = GameObject.Find("WinScreen");
+            if (Score.scoreP1 > Score.scoreP2)
             {
-                SceneManager.LoadScene("P1win");
+                //SceneManager.LoadScene("P1win");
+                winScreen.GetComponent<Image>().sprite = winImageP1;
+                winScreen.GetComponent<Animator>().runtimeAnimatorController = animatorWin1;
             }
             else
             {
-                SceneManager.LoadScene("P2win");
+                //SceneManager.LoadScene("P2win");
+                winScreen.GetComponent<Image>().sprite = winImageP2;
+                winScreen.GetComponent<Animator>().runtimeAnimatorController = animatorWin2;
             }
         }
     }

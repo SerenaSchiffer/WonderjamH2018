@@ -13462,6 +13462,10 @@ MonoBehaviour:
   - {fileID: 67703018}
   - {fileID: 2093394786}
   - {fileID: 556838506}
+  winImageP1: {fileID: 21300000, guid: 1bd7e34d2316aef4b8e674c62095f67a, type: 3}
+  winImageP2: {fileID: 21300000, guid: 65040570271c1a64881e6dccbba30715, type: 3}
+  animatorWin1: {fileID: 9100000, guid: 20883c3d282f20b48945009c3b45d740, type: 2}
+  animatorWin2: {fileID: 9100000, guid: f784bb19fcb93594f98cc37e4df5fa1c, type: 2}
 --- !u!114 &1559500097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15143,11 +15147,6 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000395345371762, guid: c22e75f0ebed4a24f92c76e11b461062,
-        type: 2}
-      propertyPath: maxTimer
-      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c22e75f0ebed4a24f92c76e11b461062, type: 2}
