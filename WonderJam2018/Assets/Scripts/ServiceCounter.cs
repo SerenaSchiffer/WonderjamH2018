@@ -108,6 +108,11 @@ public class ServiceCounter : Interactable {
                 {
                     return false;
                 }
+                else
+                {
+                    playerMelange.mesIngredients.Enqueue(playerIng);
+                    potion.mesIngredients.Enqueue(clientIng);
+                }
             }
             CalculateScore(playerMelange.player);
             myAnimator.SetTrigger("Pay");
@@ -123,9 +128,15 @@ public class ServiceCounter : Interactable {
             case StateClient.Joy:               
                 score += 10f;
                 break;
+
             case StateClient.Annoyed:
+                score += 5f;
+                break;
+
+            case StateClient.Angry:
                 score += 2f;
                 break;
+
             default:
                 break;
         }

@@ -99,15 +99,19 @@ public class GameLoop : MonoBehaviour {
             currentState = States.EndDay;
 
             GameObject winScreen = GameObject.Find("WinScreen");
+            Text p1EndScore = winScreen.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+            Text p2EndScore = winScreen.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+
+            p1EndScore.text = Score.scoreP1.ToString();
+            p2EndScore.text = Score.scoreP2.ToString();
+
             if (Score.scoreP1 > Score.scoreP2)
             {
-                //SceneManager.LoadScene("P1win");
                 winScreen.GetComponent<Image>().sprite = winImageP1;
                 winScreen.GetComponent<Animator>().runtimeAnimatorController = animatorWin1;
             }
             else
             {
-                //SceneManager.LoadScene("P2win");
                 winScreen.GetComponent<Image>().sprite = winImageP2;
                 winScreen.GetComponent<Animator>().runtimeAnimatorController = animatorWin2;
             }

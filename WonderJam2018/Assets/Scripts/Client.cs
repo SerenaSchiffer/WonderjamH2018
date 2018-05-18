@@ -80,7 +80,6 @@ public class Client : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(rb.velocity);
         if (timer >= (maxTimer / 3) * 2)
         {
             animator.SetBool("Idle", true);
