@@ -13463,7 +13463,7 @@ MonoBehaviour:
   - {fileID: 2093394786}
   - {fileID: 556838506}
   winImageP1: {fileID: 21300000, guid: 1bd7e34d2316aef4b8e674c62095f67a, type: 3}
-  winImageP2: {fileID: 21300000, guid: 65040570271c1a64881e6dccbba30715, type: 3}
+  winImageP2: {fileID: 21300000, guid: 054daa7996a26bf469058aba7e811c42, type: 3}
   animatorWin1: {fileID: 9100000, guid: 20883c3d282f20b48945009c3b45d740, type: 2}
   animatorWin2: {fileID: 9100000, guid: f784bb19fcb93594f98cc37e4df5fa1c, type: 2}
 --- !u!114 &1559500097
@@ -15118,11 +15118,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224004696702319838, guid: c22e75f0ebed4a24f92c76e11b461062,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.9743576
-      objectReference: {fileID: 0}
     - target: {fileID: 224462801954023842, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
       propertyPath: m_SizeDelta.x
@@ -15153,15 +15148,20 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224004696702319838, guid: c22e75f0ebed4a24f92c76e11b461062,
+    - target: {fileID: 95119466732170864, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -89.9
+      propertyPath: m_Controller
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 224753933760536816, guid: c22e75f0ebed4a24f92c76e11b461062,
+    - target: {fileID: 95119466732170864, guid: c22e75f0ebed4a24f92c76e11b461062,
         type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -89.9
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144286956213324, guid: c22e75f0ebed4a24f92c76e11b461062,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c22e75f0ebed4a24f92c76e11b461062, type: 2}
