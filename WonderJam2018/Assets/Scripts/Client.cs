@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ClientStatePotion
+public enum PotionState
 {
     Good,
     Bad,
@@ -17,6 +17,7 @@ public enum StateClient
     Joy,
     Annoyed,
     Angry,
+    RageQuit,
 }
 
 public class Client : MonoBehaviour {
@@ -34,18 +35,17 @@ public class Client : MonoBehaviour {
     Animator animator;
     float timer;
     bool hasArrived;
-    ClientStatePotion melangeState = ClientStatePotion.Waiting;
+    PotionState melangeState = PotionState.Waiting;
     StateClient clientState = StateClient.Joy;
     GameObject melangeClientPopup;
-
-    [SerializeField] AudioClip audio_moneySound;
+    
     [SerializeField] AudioClip audio_annoyed;
     [SerializeField] AudioClip audio_angry;
-    [SerializeField] AudioClip audio_wrongRecipe;
 
     [SerializeField] AudioClip audio_Quitannoyed;
     [SerializeField] AudioClip audio_Quitangry;
     [SerializeField] AudioClip audio_QuitEnjoyed;
+    [SerializeField] AudioClip audio_RageQuit;
 
     [SerializeField] AudioClip audio_Mix;
 
@@ -80,107 +80,112 @@ public class Client : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (timer >= (maxTimer / 3) * 2)
+        if (!hasTerminated)
         {
-            animator.SetBool("Idle", true);
-            clientState = StateClient.Joy;
-
-        }
-        else if (timer >= (maxTimer / 3) && timer < (maxTimer / 3) * 2)
-        {
-            if (audio_annoyed)
+            if (timer >= (maxTimer / 3) * 2)
             {
-                audioMixer.PlaySfx(audio_annoyed, 0);
-                audio_annoyed = null;
+                ChangeClientState(StateClient.Joy);
             }
-
-            animator.SetBool("Annoyed", true);
-            animator.SetBool("Idle", false);
-            clientState = StateClient.Annoyed;
-        }
-        else if (timer >= 0 && timer < (maxTimer / 3))
-        {
-            if (audio_angry != null)
+            else if (timer >= (maxTimer / 3) && timer < (maxTimer / 3) * 2)
             {
-                audioMixer.PlaySfx(audio_angry, 0);
-                audio_angry = null;
+                ChangeClientState(StateClient.Annoyed);
             }
-            animator.SetBool("Angry", true);
-            animator.SetBool("Annoyed", false);
-            clientState = StateClient.Angry;
-        }
-        else
-        {
-            ExitShop();
-        }
-
-        if(melangeState == ClientStatePotion.Good)
-        {
-            //TODO donner plus d'argent si content
-            if (audio_moneySound != null)
+            else if (timer >= 0 && timer < (maxTimer / 3))
             {
-                audioMixer.PlaySfx(audio_moneySound, 0);
-                audio_moneySound = null;
+                ChangeClientState(StateClient.Angry);
             }
-            if (!animator.GetBool("Angry"))
+            else
             {
-                animator.SetBool("Joy", true);
-                animator.SetBool("Annoyed", false);
-                animator.SetBool("Idle", false);
+                clientState = StateClient.RageQuit;
+                ExitShop();
             }
-            melangeState = ClientStatePotion.Finished;
-            audioMixer.PlaySfx(audio_moneySound, 0);
-            ExitShop();
-
-        }
-        else if(melangeState == ClientStatePotion.Bad)
-        {
-            if (audio_wrongRecipe != null)
-            {
-                audioMixer.PlaySfx(audio_wrongRecipe, 0);
-                audio_wrongRecipe = null;
-            }
-            if (!animator.GetBool("Angry"))
-            {
-                animator.SetBool("Angry", true);
-                animator.SetBool("Joy", false);
-                animator.SetBool("Annoyed", false);
-                animator.SetBool("Idle", false);
-            }
-            ExitShop();
         }
 
         if (hasArrived)
             timer -= Time.deltaTime;
-        if(hasTerminated)
+        if (hasTerminated)
         {
             if (myCounter.side == CounterSide.Left)
                 rb.velocity = new Vector2(-1f, 0f);
             else
                 rb.velocity = new Vector2(1f, 0f);
         }
-
-        if(melangeState == ClientStatePotion.Waiting)
+        else
         {
-            if (!IsInFrontOfSomething())
+            if (melangeState == PotionState.Waiting)
             {
-                hasArrived = true;
-                rb.velocity = new Vector2(0, -1);
-                if(melangeClientPopup)
-                    melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f,0.56f, 0));
+                if (!IsInFrontOfSomething())
+                {
+                    rb.velocity = new Vector2(0, -1);
+                }
+                else
+                {
+                    hasArrived = true;
+                    if (melangeClientPopup)
+                        melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f, 0.56f, 0));
+                }
             }
         }
     }
 
-
-    private void ExitShop()
+    public Animator GetAnimator()
     {
-        
+        return animator;
+    }
+
+    private void ChangeClientState(StateClient clientState)
+    {
+        if (this.clientState != clientState)
+        {
+            switch (clientState)
+            {
+                case StateClient.Joy:
+                    animator.SetBool("Idle", true);
+                    break;
+
+                case StateClient.Annoyed:
+                    audioMixer.PlaySfx(audio_annoyed, 0);
+                    animator.SetBool("Annoyed", true);
+                    animator.SetBool("Idle", false);
+                    break;
+
+                case StateClient.Angry:
+                    audioMixer.PlaySfx(audio_angry, 0);
+                    animator.SetBool("Angry", true);
+                    animator.SetBool("Annoyed", false);
+                    break;
+            }
+
+            this.clientState = clientState;
+        }
+    }
+
+    public void ExitShop()
+    {
         hasTerminated = true;
+        PlayQuitSound(clientState);
         myCounter.PopClientFromQueue();
-        melangeState = ClientStatePotion.Bad;
         Destroy(melangeClientPopup);
         Invoke("AutoDestroy", 3f);
+    }
+
+    private void PlayQuitSound(StateClient stateClient)
+    {
+        switch (stateClient)
+        {
+            case StateClient.Joy:
+            case StateClient.Annoyed:
+                audioMixer.PlaySfx(audio_QuitEnjoyed, 0);
+                break;
+
+            case StateClient.Angry:
+                audioMixer.PlaySfx(audio_Quitangry, 0);
+                break;
+
+            case StateClient.RageQuit:
+                audioMixer.PlaySfx(audio_RageQuit, 0);
+                break;
+        }
     }
 
     private bool IsInFrontOfSomething()
@@ -189,7 +194,6 @@ public class Client : MonoBehaviour {
         {
             int layerMask = LayerMask.GetMask(new String[] { "Interactable", "ObjectToStopClient" });
             RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -1f), 0.9f, layerMask);
-            Debug.DrawRay(transform.position - new Vector3(0f, 0.15f), new Vector3(0f, -0.2f));
 
             //GameObject other = hit.collider.gameObject;
             if (hit.collider != null)
@@ -207,7 +211,7 @@ public class Client : MonoBehaviour {
                     myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
 
                 if (!myCounter.DoesQueueContain(gameObject))
-                myCounter.AddClientToQueue(gameObject);
+                    myCounter.AddClientToQueue(gameObject);
 
                 return true;
             }

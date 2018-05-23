@@ -542,6 +542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   potion: {fileID: 0}
+  audio_moneySound: {fileID: 8300000, guid: 68450529d7eaed34d94f26596d596a64, type: 3}
+  audio_wrongRecipe: {fileID: 8300000, guid: 3412509a04b71c94a9ee3f2308e0fdea, type: 3}
 --- !u!212 &67703019
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4460,6 +4462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   potion: {fileID: 0}
+  audio_moneySound: {fileID: 8300000, guid: 68450529d7eaed34d94f26596d596a64, type: 3}
+  audio_wrongRecipe: {fileID: 8300000, guid: 3412509a04b71c94a9ee3f2308e0fdea, type: 3}
 --- !u!212 &556838507
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16242,6 +16246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   potion: {fileID: 0}
+  audio_moneySound: {fileID: 8300000, guid: 68450529d7eaed34d94f26596d596a64, type: 3}
+  audio_wrongRecipe: {fileID: 8300000, guid: 3412509a04b71c94a9ee3f2308e0fdea, type: 3}
 --- !u!212 &1806566558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18212,6 +18218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   potion: {fileID: 0}
+  audio_moneySound: {fileID: 8300000, guid: 68450529d7eaed34d94f26596d596a64, type: 3}
+  audio_wrongRecipe: {fileID: 8300000, guid: 3412509a04b71c94a9ee3f2308e0fdea, type: 3}
 --- !u!212 &2093394787
 SpriteRenderer:
   m_ObjectHideFlags: 0

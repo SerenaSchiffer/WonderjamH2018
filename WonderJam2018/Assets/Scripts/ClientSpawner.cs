@@ -16,7 +16,8 @@ public class ClientSpawner : MonoBehaviour {
         timer = spawnTimer;
         objectsReferences = GetComponent<InstantiableObjectContainer>();
         Transform selectedCounter = targets.transform.GetChild(0);
-        if (selectedCounter.GetComponent<ServiceCounter>().GetQueueCount() < 2)
+        //if (selectedCounter.GetComponent<ServiceCounter>().GetQueueCount() < 2)
+        if (!selectedCounter.GetComponent<ServiceCounter>().IsQueueFull())
         {
             target = selectedCounter.gameObject;
             Vector3 spawnPosition = new Vector3(target.transform.position.x, transform.position.y, 0);
@@ -35,7 +36,8 @@ public class ClientSpawner : MonoBehaviour {
             int rdmIndex = Random.Range(0, 2);
 
             Transform selectedCounter = targets.transform.GetChild(rdmIndex);
-            if (selectedCounter.GetComponent<ServiceCounter>().GetQueueCount() < 2)
+            //if (selectedCounter.GetComponent<ServiceCounter>().GetQueueCount() < 2)
+            if (!selectedCounter.GetComponent<ServiceCounter>().IsQueueFull())
             {
                 target = selectedCounter.gameObject;
                 Vector3 spawnPosition = new Vector3(target.transform.position.x, transform.position.y, 0);

@@ -13,7 +13,7 @@ public class ServiceCounter : Interactable {
 
     public CounterSide side;
     bool isGoodMelange = false;
-    ClientStatePotion potionState = ClientStatePotion.Waiting;
+    PotionState potionState = PotionState.Waiting;
     StateClient clientState = StateClient.Joy;
     
     Queue<GameObject> clientsEnFile;
@@ -21,6 +21,10 @@ public class ServiceCounter : Interactable {
     [HideInInspector] public Melange potion;
     UIManager uiManager;
     Animator myAnimator;
+
+    [SerializeField] AudioClip audio_moneySound;
+    [SerializeField] AudioClip audio_wrongRecipe;
+    private AudioManager audioMixer;
 
     public void Awake()
     {
@@ -30,6 +34,7 @@ public class ServiceCounter : Interactable {
 	// Use this for initialization
 	public override void Start () {
         base.Start();
+        audioMixer = GameObject.Find("AudioMixer").GetComponent<AudioManager>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         myAnimator = GetComponent<Animator>();      
 	}
@@ -75,14 +80,39 @@ public class ServiceCounter : Interactable {
     {
         if(playerItem as Melange != null && potion != null)
         {
+            GameObject firstClient = clientsEnFile.Peek();
+            Animator animator = firstClient.GetComponent<Animator>();
+
             isGoodMelange = VerifiIfGoodPotion((Melange)playerItem);
-            if(isGoodMelange)
+            if (isGoodMelange)
             {
-                potionState = ClientStatePotion.Good;
+                //potionState = PotionState.Good;
+                //TODO donner plus d'argent si content
+                audioMixer.PlaySfx(audio_moneySound, 0);
+
+                if (!animator.GetBool("Angry"))
+                {
+                    animator.SetBool("Joy", true);
+                    animator.SetBool("Annoyed", false);
+                    animator.SetBool("Angry", false);
+                    animator.SetBool("Idle", false);
+                }
+
+                firstClient.GetComponent<Client>().ExitShop();
             }
             else
             {
-                potionState = ClientStatePotion.Bad;
+                audioMixer.PlaySfx(audio_wrongRecipe, 0);
+                
+                if (!animator.GetBool("Angry"))
+                {
+                    animator.SetBool("Angry", true);
+                    animator.SetBool("Joy", false);
+                    animator.SetBool("Annoyed", false);
+                    animator.SetBool("Idle", false);
+                }
+
+                firstClient.GetComponent<Client>().ExitShop();
             }
             return null;
         }
@@ -126,14 +156,10 @@ public class ServiceCounter : Interactable {
         switch (clientState)
         {
             case StateClient.Joy:               
-                score += 10f;
-                break;
-
-            case StateClient.Annoyed:
                 score += 5f;
                 break;
 
-            case StateClient.Angry:
+            case StateClient.Annoyed:
                 score += 2f;
                 break;
 
@@ -143,21 +169,21 @@ public class ServiceCounter : Interactable {
         uiManager.UpdateScore(player, score);
     }
 
-    public ClientStatePotion InteractWithClient(Melange clientMelange, StateClient clientState)
+    public PotionState InteractWithClient(Melange clientMelange, StateClient clientState)
     {
         this.clientState = clientState;
         if(potion == null)
             potion = clientMelange;
-        if(potionState != ClientStatePotion.Waiting)
+        if(potionState != PotionState.Waiting)
         {
             potion = null;
-            ClientStatePotion temp = potionState;
-            potionState = ClientStatePotion.Waiting;
+            PotionState temp = potionState;
+            potionState = PotionState.Waiting;
             return temp;
         }
         else
         {
-            return ClientStatePotion.Waiting;
+            return PotionState.Waiting;
         }
             
     }
