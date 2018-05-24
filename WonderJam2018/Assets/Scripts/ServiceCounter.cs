@@ -16,7 +16,7 @@ public class ServiceCounter : Interactable {
     PotionState potionState = PotionState.Waiting;
     StateClient clientState = StateClient.Joy;
     
-    Queue<GameObject> clientsEnFile;
+    public Queue<GameObject> clientsEnFile;
 
     [HideInInspector] public Melange potion;
     UIManager uiManager;
@@ -97,13 +97,11 @@ public class ServiceCounter : Interactable {
                     animator.SetBool("Angry", false);
                     animator.SetBool("Idle", false);
                 }
-
-                firstClient.GetComponent<Client>().ExitShop();
             }
             else
             {
                 audioMixer.PlaySfx(audio_wrongRecipe, 0);
-                
+
                 if (!animator.GetBool("Angry"))
                 {
                     animator.SetBool("Angry", true);
@@ -111,9 +109,10 @@ public class ServiceCounter : Interactable {
                     animator.SetBool("Annoyed", false);
                     animator.SetBool("Idle", false);
                 }
-
-                firstClient.GetComponent<Client>().ExitShop();
             }
+
+            firstClient.GetComponent<Client>().ExitShop();
+            potion = null;
             return null;
         }
         else
@@ -169,23 +168,11 @@ public class ServiceCounter : Interactable {
         uiManager.UpdateScore(player, score);
     }
 
-    public PotionState InteractWithClient(Melange clientMelange, StateClient clientState)
+    public void InteractWithClient(Melange clientMelange, StateClient clientState)
     {
         this.clientState = clientState;
-        if(potion == null)
-            potion = clientMelange;
-        if(potionState != PotionState.Waiting)
-        {
-            potion = null;
-            PotionState temp = potionState;
-            potionState = PotionState.Waiting;
-            return temp;
-        }
-        else
-        {
-            return PotionState.Waiting;
-        }
-            
+        potion = clientMelange;
+        //return potionState; 
     }
 
     public override void Highlight(PickableItem playerItem)

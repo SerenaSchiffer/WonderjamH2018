@@ -112,19 +112,17 @@ public class Client : MonoBehaviour {
         }
         else
         {
-            if (melangeState == PotionState.Waiting)
-            {
+            /*if (melangeState == PotionState.Waiting)
+            {*/
                 if (!IsInFrontOfSomething())
                 {
                     rb.velocity = new Vector2(0, -1);
-                }
-                else
-                {
-                    hasArrived = true;
-                    if (melangeClientPopup)
-                        melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f, 0.56f, 0));
-                }
+                if (melangeClientPopup)
+                    melangeClientPopup.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f, 0.56f, 0));
             }
+                else
+                    hasArrived = true;
+            //}
         }
     }
 
@@ -205,7 +203,7 @@ public class Client : MonoBehaviour {
                 if (hit.collider.gameObject.layer == 8)
                 {
                     myCounter = hit.collider.gameObject.GetComponent<ServiceCounter>();
-                    melangeState = myCounter.InteractWithClient(melangeClient, clientState);
+                    /*melangeState = */myCounter.InteractWithClient(melangeClient, clientState);
                 }
                 else if (hit.collider.gameObject.layer == 10)
                     myCounter = hit.collider.gameObject.GetComponent<Client>().myCounter;
