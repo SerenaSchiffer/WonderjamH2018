@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   mySprite: {fileID: 21300000, guid: dcd2d72cc236e0d4bacb8ef04d5df016, type: 3}
+  typedeItem: 1
   ingredientName: Mushroom
-  baseIngredientValue: 5
+  baseIngredientValue: 4
   mainColor: {r: 0.6838235, g: 0.010056238, b: 0.10630866, a: 1}

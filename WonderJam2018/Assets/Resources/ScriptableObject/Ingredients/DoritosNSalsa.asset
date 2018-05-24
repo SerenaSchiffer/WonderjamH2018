@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: DoritosNSalsa
   m_EditorClassIdentifier: 
   mySprite: {fileID: 21300000, guid: 05c02ee6b619ffc498cdc9c2610edf52, type: 3}
+  typedeItem: 1
   ingredientName: DoritosNSalsa
-  baseIngredientValue: 7
+  baseIngredientValue: 4
   mainColor: {r: 0.2896842, g: 0.7474406, b: 0.83823526, a: 1}

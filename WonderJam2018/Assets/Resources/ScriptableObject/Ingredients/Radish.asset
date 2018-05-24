@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Radish
   m_EditorClassIdentifier: 
   mySprite: {fileID: 21300000, guid: 5362ba951f3739746b03e09563468b11, type: 3}
+  typedeItem: 1
   ingredientName: Radish
-  baseIngredientValue: 3
+  baseIngredientValue: 2
   mainColor: {r: 0.88235295, g: 0, b: 0.12605037, a: 1}

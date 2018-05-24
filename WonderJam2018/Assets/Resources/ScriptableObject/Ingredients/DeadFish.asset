@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: DeadFish
   m_EditorClassIdentifier: 
   mySprite: {fileID: 21300000, guid: d311d673477698b47a58cf29a28afc29, type: 3}
+  typedeItem: 1
   ingredientName: Dead Fish
-  baseIngredientValue: 3
+  baseIngredientValue: 2
   mainColor: {r: 0.05298442, g: 0.5147059, b: 0.20901449, a: 1}
