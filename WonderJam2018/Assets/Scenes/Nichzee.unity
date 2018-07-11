@@ -113,6 +113,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10816661 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008732242165720, guid: 2622905a25e2efe4ebe7db51f7527e6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1616476042}
+--- !u!58 &10816665
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10816661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45
 --- !u!1 &16188345
 GameObject:
   m_ObjectHideFlags: 0
@@ -8760,6 +8780,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1037011451 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008732242165720, guid: 2622905a25e2efe4ebe7db51f7527e6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1387172727}
+--- !u!58 &1037011455
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1037011451}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45
 --- !u!1 &1039555083
 GameObject:
   m_ObjectHideFlags: 0
@@ -12039,7 +12079,13 @@ Prefab:
       propertyPath: useKeyboard
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 61596778553290480, guid: 2622905a25e2efe4ebe7db51f7527e6e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d06ede16a56b61a47bf9b12d9aa1b800, type: 2}
+    m_RemovedComponents:
+    - {fileID: 61596778553290480, guid: 2622905a25e2efe4ebe7db51f7527e6e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2622905a25e2efe4ebe7db51f7527e6e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1412065481
@@ -14193,7 +14239,13 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 61596778553290480, guid: 2622905a25e2efe4ebe7db51f7527e6e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d06ede16a56b61a47bf9b12d9aa1b800, type: 2}
+    m_RemovedComponents:
+    - {fileID: 61596778553290480, guid: 2622905a25e2efe4ebe7db51f7527e6e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2622905a25e2efe4ebe7db51f7527e6e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1617276094
